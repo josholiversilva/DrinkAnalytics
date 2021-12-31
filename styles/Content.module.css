@@ -1,0 +1,49 @@
+.box {
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+    width: 100%;
+    border-radius: 50px;
+    position: relative;
+}
+
+.selections {
+    display: inline-block;
+    padding-top: 3%;
+    margin-left: 5%;
+    min-height: 10%;
+    line-height: 1px;
+    width: 100%;
+}
+
+.selection {
+    float: left;
+    display: inline;
+    padding-right: 1em;
+    font-size: 25px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.selection:hover {
+    color: lightgray;
+}
+
+.current {
+    display: inline;
+    float: right;
+    font-size: 25px;
+    color: white;
+    margin-right: 10%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.current:hover {
+    color: lightgray;
+}

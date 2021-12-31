@@ -1,0 +1,54 @@
+.top_left_box {
+    background-color: red;
+    color: white;
+    position: absolute;
+    min-height: 20%;
+    width: 45%;
+    border: 2px solid rgb(157, 154, 154);
+    top: 15%;
+    right: 54%;
+}
+
+.mid_left_box {
+    background-color: blue;
+    color: white;
+    position: absolute;
+    min-height: 20%;
+    width: 45%;
+    border: 2px solid rgb(157, 154, 154);
+    top: 50%;
+    right: 54%;
+}
+
+.top_right_box{
+    background-color: green;
+    color: white;
+    position: absolute;
+    min-height: 55%;
+    width: 45%;
+    border: 2px solid rgb(157, 154, 154);
+    top: 15%;
+    right: 1%;
+}
+
+.bottom_left_box {
+    background-color: purple;
+    color: white;
+    position: absolute;
+    min-height: 5%;
+    width: 5%;
+    border: 2px solid rgb(157, 154, 154);
+    top: 90%;
+    right: 54%;
+}
+
+.bottom_right_box {
+    background-color: purple;
+    color: white;
+    position: absolute;
+    min-height: 5%;
+    width: 5%;
+    border: 2px solid rgb(157, 154, 154);
+    top: 90%;
+    right: 41%;
+}

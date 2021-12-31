@@ -1,0 +1,18 @@
+.main {
+    background-color: lightgray;
+    position: absolute;
+    padding: 0.1rem 0;
+    width: 100%;
+    font-size: 20px;
+    top: 0;
+}
+
+.left_txt {
+    float: left;
+    margin-left: 1em;
+}
+
+.right_txt {
+    float: right;
+    margin-right: 1em;
+}
