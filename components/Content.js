@@ -30,12 +30,14 @@ const Content = (props) => {
             <div className={inner.top_left_box}>
                 <p>Favorite Drink</p>
                 <div className={inner.top_left_box_content_pic}>
+                    <div className={inner.pic}>
                         <Image className={inner.round}
                             alt="Drink Image"
                             src={"/test.jpeg"}
                             width={150}
                             height={150}
                         />
+                    </div>
                 </div>
                 <div className={inner.top_left_box_content_desc}>
                     <h2>Mango Milk Tea</h2>
@@ -45,16 +47,22 @@ const Content = (props) => {
 
             <div className={inner.mid_left_box}>
                 <p>Top Company</p>
-                <div className={inner.top_left_box_content_pic}>
-                    <Image 
-                        alt="Drink Image"
-                        src={"/sunright.png"}
-                        layout='fill'
-                    />
+                <div className={inner.bottom_left_box_content_pic}>
+                    <div className={inner.pic}>
+                        <Image className={inner.round}
+                            alt="Drink Image"
+                            src={"/sunright.jpeg"}
+                            width={150}
+                            height={150}
+                        />
+                    </div>
                 </div>
                 <div className={inner.top_left_box_content_desc}>
-                    <h2>Mango Milk Tea</h2>
-                    <p>25% sugar, less ice, sub cane sugar with honey, honey boba</p>
+                    <h2>Sunright Tea Bar</h2>
+                    <p>City, State</p>
+                    <p>4 Stars</p>
+                    <p>Review Count</p>
+                    <p>2 Dollar Signs </p>
                 </div>
             </div>
  
@@ -71,6 +79,24 @@ const Content = (props) => {
                     1. Sunright Tea Studio<br />
                     2. 7 Leaves<br />
                     3. AU<br />
+                </div>
+
+                <div className={styles.card} style={{position: 'relative', height: '50%', float: 'left', clear: 'both', display:'inline-block'}}>
+                    <h1>History</h1>
+                    Got some drink for this much money at this location<br />
+                    Got some drink for this much money at this location<br />
+                    Got some drink for this much money at this location<br />
+                    Got some drink for this much money at this location<br />
+                    Got some drink for this much money at this location<br />
+                    Got some drink for this much money at this location<br />
+                    Got some drink for this much money at this location<br />
+                    Got some drink for this much money at this location<br />
+                    Got some drink for this much money at this location<br />
+                    Got some drink for this much money at this location<br />
+                    Got some drink for this much money at this location<br />
+                    Got some drink for this much money at this location<br />
+                    Got some drink for this much money at this location<br />
+                    Got some drink for this much money at this location<br />
                 </div>
             </div>
         </>

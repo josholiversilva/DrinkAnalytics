@@ -1,12 +1,10 @@
 .top_box {
-    background-color: orchid;
     color: black;
     position: absolute;
     max-height: 30%;
-    top: 5%;
-    right: 54%;
+    top: 6%;
+    right: 50%;
     width: 45%;
-    border: 2px solid rgb(157, 154, 154);
     text-align: center;
     display: flex;
     flex-wrap: wrap;
@@ -14,69 +12,49 @@
 
 .top_left_box {
     /* background-color: red; */
-    color: white;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    color: #19222e;
     position: absolute;
     min-height: 20%;
-    height: 20vh;
+    height: 21.5vh;
     width: 45%;
     /* border: 2px solid rgb(157, 154, 154); */
     top: 37.5%;
-    right: 54%;
+    right: 50%;
     text-align: center;
 }
 
 .mid_left_box {
-    background-color: blue;
     display: block;
-    color: white;
+    color: #19222e;
     position: absolute;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
     min-height: 20%;
+    height: 21.5vh;
     width: 45%;
     /* border: 2px solid rgb(157, 154, 154); */
-    top: 65%;
-    right: 54%;
+    top: 70%;
+    right: 50%;
     text-align: center;
 }
 
 .top_right_box{
     text-align: center;
     justify-content: center;
-    background-color: green;
-    color: white;
     position: absolute;
     min-height: 25%;
-    height: 65vh;
-    width: 50%;
+    height: 70vh;
+    width: 45%;
     overflow: auto;
-    border: 2px solid rgb(157, 154, 154);
-    top: 5%;
+    top: 3%;
     right: 1%;
     font-size: 14px;
     font-size: 2vh;
     display: flex;
     flex-wrap: wrap;
-}
-
-.bottom_left_box {
-    background-color: purple;
-    color: white;
-    position: absolute;
-    min-height: 5%;
-    width: 5%;
-    border: 2px solid rgb(157, 154, 154);
-    top: 90%;
-    right: 54%;
-}
-
-.bottom_right_box {
-    background-color: purple;
-    color: white;
-    position: absolute;
-    min-height: 5%;
-    width: 5%;
-    border: 2px solid rgb(157, 154, 154);
-    top: 90%;
-    right: 41%;
+    color: #19222e;
 }
 
 .top_left_box_content_pic {
@@ -88,17 +66,33 @@
     height: 10.75vh;
 }
 
+.bottom_left_box_content_pic {
+    display: inline;
+    width: 50%;
+    color: black;
+    float:left;
+    min-height: 5%;
+    height: 15vh;
+}
+
 .top_left_box_content_desc {
     display: inline;
-    color: black;
+    color: #19222e;
     background-color: yellow;
     width: 50%;
     float: right;
-    height: 12.5vh;
+    position: relative;
+    height: 62%;
     overflow: auto;
     font-size: 1vh;
 }
 
 .round {
     border-radius: 50%;
+}
+
+.pic {
+    position: relative;
+    height: 50%;
+    width: 100%;
 }
