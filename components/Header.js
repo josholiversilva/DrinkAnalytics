@@ -9,7 +9,7 @@ const Header = () => {
             </p>
 
             <p className={headerStyles.right_txt}>
-                <Link href='/about'>About</Link>
+                <Link href='/form'>Form</Link>
             </p>
         </div>
     )

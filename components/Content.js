@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import headerStyles from '../styles/Header.module.css'
 import inner from '../styles/Inner.module.css'
 import styles from '../styles/Layout.module.css'
 
