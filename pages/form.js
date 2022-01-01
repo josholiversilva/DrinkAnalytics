@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Row, Col, Button, Form } from 'react-bootstrap'
+import ReactStars from "react-rating-stars-component";
 
 const form = () => {
     const [type, setType] = useState("California");
@@ -7,7 +8,7 @@ const form = () => {
     return (
         <>
           <div style={{paddingLeft: "2em", paddingRight: "2em"}}>
-            <div><h1 style={{paddingTop:"15vh"}}>Boba Entry<br /><br /></h1></div>
+            <div><h1>Boba Entry<br /><br /></h1></div>
               <Form>
                 <Row className="mb-3">
                   <Form.Group as={Col}>
@@ -20,11 +21,6 @@ const form = () => {
                     <Form.Control required placeholder="Wushiland" />
                   </Form.Group>
                 </Row>
-
-                <Form.Group className="mb-3">
-                  <Form.Label>Location</Form.Label>
-                  <Form.Control placeholder="1234 Main St" />
-                </Form.Group>
 
                 <Row className="mb-3">
                   <Form.Group as={Col}>
@@ -47,17 +43,33 @@ const form = () => {
                         <option value="AZ">Arizona</option>
                       </Form.Control>
                   </Form.Group>
-
-                  <Form.Group as={Col} md="3">
-                    <Form.Label>Zip</Form.Label>
-                    <Form.Control type="text" placeholder="Zip" />
-                    <Form.Control.Feedback type="invalid">
-                      Please provide a valid zip.
-                    </Form.Control.Feedback>
-                  </Form.Group>
                 </Row>
 
-                <div style={{paddingTop:"15vh"}} className="d-grid gap-2">
+                <Row className="mb-1">
+                    <Form.Group as={Col}>
+                        <Form.Label>Description</Form.Label>
+                        <Form.Control as="textarea" rows="2" name="description" />
+                    </Form.Group>
+                </Row>
+
+                <ReactStars
+                    size={50}
+                    count={5}
+                    isHalf={true}
+                />
+
+                <Row className="mb-1">
+                    <Form.Group as={Col}>
+                        <Form.Control
+                            required 
+                            as={ReactStars} 
+                            size={50} 
+                            count={5} 
+                            isHalf={true} />
+                    </Form.Group>
+                </Row>
+
+                <div style={{paddingTop:"10vh"}} className="d-grid gap-2">
                   <Button variant="primary" type="submit">
                     Submit
                   </Button>
