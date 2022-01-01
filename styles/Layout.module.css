@@ -76,21 +76,33 @@
 }
 
 .card2 {
-  margin: 1rem;
-  padding: 1.5rem;
   text-align: center;
   color: inherit;
   text-decoration: none;
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 80%;
-  width: 80%;
-  height: 20vh;
-  max-height: 50%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  height: 11vh;
   overflow: auto;
   font-size: 1vh;
-  align-items: center
+  align-items: center;
+  position: relative;
+  height: 10vh;
+  transition: 1s;
+}
+
+p.span.extra {
+  display: none;
+}
+
+.card2:hover,
+.card2:focus {
+  border: 2px solid #ff1a0a;
+  background-color: #fff;
+  color: ff1a0a;
 }
 
 .card {
@@ -102,10 +114,10 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 50%;
-  width: 45%;
-  height: 50vh;
-  max-height: 50%;
+  max-width: 100%;
+  width: 100%;
+  height: 20vh;
+  max-height: 20vh;
   overflow: auto;
   font-size: 1vh;
 }
