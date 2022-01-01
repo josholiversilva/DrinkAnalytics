@@ -22,7 +22,7 @@
     float: left;
     display: inline;
     padding-right: 1em;
-    font-size: 25px;
+    font-size: 2.5vh;
     color: white;
     background: none;
     border: none;
@@ -36,7 +36,7 @@
 .current {
     display: inline;
     float: right;
-    font-size: 25px;
+    font-size: 2.5vh;
     color: white;
     margin-right: 10%;
     background: none;

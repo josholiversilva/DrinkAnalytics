@@ -1,34 +1,56 @@
+.top_box {
+    background-color: orchid;
+    color: black;
+    position: absolute;
+    min-height: 5%;
+    width: 65%;
+    border: 2px solid rgb(157, 154, 154);
+    top: 0;
+    text-align: center;
+}
+
 .top_left_box {
     background-color: red;
     color: white;
     position: absolute;
     min-height: 20%;
+    height: 20vh;
     width: 45%;
     border: 2px solid rgb(157, 154, 154);
-    top: 15%;
+    top: 25%;
     right: 54%;
+    text-align: center;
 }
 
 .mid_left_box {
     background-color: blue;
+    display: block;
     color: white;
     position: absolute;
     min-height: 20%;
     width: 45%;
     border: 2px solid rgb(157, 154, 154);
-    top: 50%;
+    top: 55%;
     right: 54%;
 }
 
 .top_right_box{
+    text-align: center;
+    justify-content: center;
     background-color: green;
     color: white;
     position: absolute;
-    min-height: 55%;
-    width: 45%;
+    min-height: 25%;
+    height: 55vh;
+    width: 50%;
+    overflow: auto;
     border: 2px solid rgb(157, 154, 154);
     top: 15%;
     right: 1%;
+    font-size: 14px;
+    font-size: 2vh;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .bottom_left_box {
@@ -51,4 +73,25 @@
     border: 2px solid rgb(157, 154, 154);
     top: 90%;
     right: 41%;
+}
+
+.top_left_box_content_pic {
+    display: inline;
+    background-color: white;
+    width: 50%;
+    color: black;
+    float:left;
+    min-height: 5%;
+    height: 10.75vh;
+}
+
+.top_left_box_content_desc {
+    display: inline;
+    color: black;
+    background-color: yellow;
+    width: 50%;
+    float: right;
+    height: 12vh;
+    overflow: scroll;
+    font-size: 1vh;
 }

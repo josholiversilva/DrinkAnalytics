@@ -1,0 +1,897 @@
+{
+  "businesses": [
+    {
+      "id": "Q14QkFLL0SAqfOOA1IOV0g",
+      "alias": "sunright-tea-studio-little-tokyo-los-angeles-4",
+      "name": "Sunright Tea Studio - Little Tokyo",
+      "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/cgS2WFJk0Fk3guqOTa6IrQ/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/sunright-tea-studio-little-tokyo-los-angeles-4?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 124,
+      "categories": [
+        {
+          "alias": "coffee",
+          "title": "Coffee & Tea"
+        },
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        },
+        {
+          "alias": "juicebars",
+          "title": "Juice Bars & Smoothies"
+        }
+      ],
+      "rating": 4.5,
+      "coordinates": {
+        "latitude": 34.048222,
+        "longitude": -118.239
+      },
+      "transactions": [
+        "delivery",
+        "pickup"
+      ],
+      "price": "$$",
+      "location": {
+        "address1": "134 S Central Ave",
+        "address2": null,
+        "address3": "",
+        "city": "Los Angeles",
+        "zip_code": "90012",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "134 S Central Ave",
+          "Los Angeles, CA 90012"
+        ]
+      },
+      "phone": "+12137588888",
+      "display_phone": "(213) 758-8888",
+      "distance": 7736.668214590929
+    },
+    {
+      "id": "btf9XE4onaLwAhF-NLI9PQ",
+      "alias": "sunright-tea-studio-sawtelle-los-angeles-3",
+      "name": "Sunright Tea Studio - Sawtelle",
+      "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/KcqNAJtrvdEcsCpcz6EGjA/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/sunright-tea-studio-sawtelle-los-angeles-3?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 133,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        },
+        {
+          "alias": "juicebars",
+          "title": "Juice Bars & Smoothies"
+        }
+      ],
+      "rating": 4.5,
+      "coordinates": {
+        "latitude": 34.03796,
+        "longitude": -118.44083
+      },
+      "transactions": [
+        "delivery"
+      ],
+      "price": "$$",
+      "location": {
+        "address1": "2206 Sawtelle Blvd",
+        "address2": null,
+        "address3": "",
+        "city": "Los Angeles",
+        "zip_code": "90064",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "2206 Sawtelle Blvd",
+          "Los Angeles, CA 90064"
+        ]
+      },
+      "phone": "+14244996999",
+      "display_phone": "(424) 499-6999",
+      "distance": 11316.51408317261
+    },
+    {
+      "id": "piOS1DknfLJgVjphyjhe_g",
+      "alias": "sunright-tea-studio-gardena",
+      "name": "Sunright Tea Studio",
+      "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/q95bccMhoIaklChB4yr6fg/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/sunright-tea-studio-gardena?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 31,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        },
+        {
+          "alias": "coffee",
+          "title": "Coffee & Tea"
+        },
+        {
+          "alias": "juicebars",
+          "title": "Juice Bars & Smoothies"
+        }
+      ],
+      "rating": 4.0,
+      "coordinates": {
+        "latitude": 33.87414298557295,
+        "longitude": -118.3074043
+      },
+      "transactions": [],
+      "price": "$$",
+      "location": {
+        "address1": "1717 W Artesia Blvd",
+        "address2": null,
+        "address3": "",
+        "city": "Gardena",
+        "zip_code": "90248",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "1717 W Artesia Blvd",
+          "Gardena, CA 90248"
+        ]
+      },
+      "phone": "+14242923623",
+      "display_phone": "(424) 292-3623",
+      "distance": 20882.896101614617
+    },
+    {
+      "id": "Ehb-4VR6eOA__D5hNJ-DIQ",
+      "alias": "sunright-tea-studio-monterey-park-monterey-park",
+      "name": "Sunright Tea Studio - Monterey Park",
+      "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/LooeBvwr8LRsyU-6uQJVbg/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/sunright-tea-studio-monterey-park-monterey-park?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 254,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        },
+        {
+          "alias": "coffee",
+          "title": "Coffee & Tea"
+        },
+        {
+          "alias": "juicebars",
+          "title": "Juice Bars & Smoothies"
+        }
+      ],
+      "rating": 4.0,
+      "coordinates": {
+        "latitude": 34.064093,
+        "longitude": -118.13447519805077
+      },
+      "transactions": [],
+      "price": "$$",
+      "location": {
+        "address1": "141 N Atlantic Blvd",
+        "address2": "Ste 107",
+        "address3": "",
+        "city": "Monterey Park",
+        "zip_code": "91754",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "141 N Atlantic Blvd",
+          "Ste 107",
+          "Monterey Park, CA 91754"
+        ]
+      },
+      "phone": "+16267827341",
+      "display_phone": "(626) 782-7341",
+      "distance": 17219.305184093337
+    },
+    {
+      "id": "S85WXd_ozRheb74FOFUZbQ",
+      "alias": "sunright-tea-studio-pasadena-pasadena",
+      "name": "Sunright Tea Studio - Pasadena",
+      "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/3fSJFROQyHpdTsIeIuNerw/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/sunright-tea-studio-pasadena-pasadena?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 44,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        },
+        {
+          "alias": "coffee",
+          "title": "Coffee & Tea"
+        }
+      ],
+      "rating": 5.0,
+      "coordinates": {
+        "latitude": 34.145580914653095,
+        "longitude": -118.1508825
+      },
+      "transactions": [],
+      "location": {
+        "address1": "16 W Colorado Blvd",
+        "address2": null,
+        "address3": "",
+        "city": "Pasadena",
+        "zip_code": "91105",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "16 W Colorado Blvd",
+          "Pasadena, CA 91105"
+        ]
+      },
+      "phone": "+16268668999",
+      "display_phone": "(626) 866-8999",
+      "distance": 18266.233512221574
+    },
+    {
+      "id": "TYSXqqDTOq22q3fulFMeVw",
+      "alias": "sunright-tea-studio-san-gabriel-san-gabriel",
+      "name": "Sunright Tea Studio - San Gabriel",
+      "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/nksowdZhK19sAEH2NFkuzg/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/sunright-tea-studio-san-gabriel-san-gabriel?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 91,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        }
+      ],
+      "rating": 4.0,
+      "coordinates": {
+        "latitude": 34.08464,
+        "longitude": -118.09106
+      },
+      "transactions": [],
+      "price": "$$",
+      "location": {
+        "address1": "1245 S San Gabriel Blvd",
+        "address2": null,
+        "address3": "",
+        "city": "San Gabriel",
+        "zip_code": "91776",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "1245 S San Gabriel Blvd",
+          "San Gabriel, CA 91776"
+        ]
+      },
+      "phone": "+16266566257",
+      "display_phone": "(626) 656-6257",
+      "distance": 21351.979843687397
+    },
+    {
+      "id": "TRIhQ_XjtHjl3zPflsXBSA",
+      "alias": "sunright-tea-studio-arcadia-arcadia-2",
+      "name": "Sunright Tea Studio - Arcadia",
+      "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/gzeUc4MK4gTKl92PFieB0Q/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/sunright-tea-studio-arcadia-arcadia-2?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 28,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        },
+        {
+          "alias": "coffee",
+          "title": "Coffee & Tea"
+        },
+        {
+          "alias": "juicebars",
+          "title": "Juice Bars & Smoothies"
+        }
+      ],
+      "rating": 4.5,
+      "coordinates": {
+        "latitude": 34.12492,
+        "longitude": -118.05996
+      },
+      "transactions": [],
+      "price": "$$",
+      "location": {
+        "address1": "1220 S Golden West Ave",
+        "address2": "Ste A",
+        "address3": "",
+        "city": "Arcadia",
+        "zip_code": "91007",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "1220 S Golden West Ave",
+          "Ste A",
+          "Arcadia, CA 91007"
+        ]
+      },
+      "phone": "",
+      "display_phone": "",
+      "distance": 25139.563843675944
+    },
+    {
+      "id": "xfWHnFTFN8bq0bElAyWx-A",
+      "alias": "sunright-tea-studio-garden-grove-2",
+      "name": "Sunright Tea Studio",
+      "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/pRY1SU2epek5aP07u3_1ew/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/sunright-tea-studio-garden-grove-2?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 69,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        },
+        {
+          "alias": "juicebars",
+          "title": "Juice Bars & Smoothies"
+        }
+      ],
+      "rating": 4.0,
+      "coordinates": {
+        "latitude": 33.7608345,
+        "longitude": -117.9547251
+      },
+      "transactions": [],
+      "location": {
+        "address1": "13878 Brookhurst St",
+        "address2": null,
+        "address3": "",
+        "city": "Garden Grove",
+        "zip_code": "92843",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "13878 Brookhurst St",
+          "Garden Grove, CA 92843"
+        ]
+      },
+      "phone": "+17145915140",
+      "display_phone": "(714) 591-5140",
+      "distance": 47633.25330519577
+    },
+    {
+      "id": "R_gvMNK-6FhNVwN7hFOm4w",
+      "alias": "sunright-tea-studio-fullerton-fullerton",
+      "name": "Sunright Tea Studio - Fullerton",
+      "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/qjKqE9fHmtqsnk7xkkGj_w/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/sunright-tea-studio-fullerton-fullerton?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 149,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        },
+        {
+          "alias": "coffee",
+          "title": "Coffee & Tea"
+        },
+        {
+          "alias": "juicebars",
+          "title": "Juice Bars & Smoothies"
+        }
+      ],
+      "rating": 4.5,
+      "coordinates": {
+        "latitude": 33.85986983796191,
+        "longitude": -117.9212798754631
+      },
+      "transactions": [
+        "delivery",
+        "pickup"
+      ],
+      "price": "$$",
+      "location": {
+        "address1": "207 E Orangethorpe Ave",
+        "address2": null,
+        "address3": "",
+        "city": "Fullerton",
+        "zip_code": "92832",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "207 E Orangethorpe Ave",
+          "Fullerton, CA 92832"
+        ]
+      },
+      "phone": "+17145193588",
+      "display_phone": "(714) 519-3588",
+      "distance": 43182.549937997166
+    },
+    {
+      "id": "6LX_8yylVVbz-4jyaiSVCw",
+      "alias": "half-and-half-tea-express-monterey-park-monterey-park",
+      "name": "Half & Half Tea Express - Monterey Park",
+      "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/md4SwAZLMtbHzmwJK-nkWQ/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/half-and-half-tea-express-monterey-park-monterey-park?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 2800,
+      "categories": [
+        {
+          "alias": "juicebars",
+          "title": "Juice Bars & Smoothies"
+        },
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        }
+      ],
+      "rating": 3.5,
+      "coordinates": {
+        "latitude": 34.063556775734,
+        "longitude": -118.134433969535
+      },
+      "transactions": [
+        "delivery"
+      ],
+      "price": "$",
+      "location": {
+        "address1": "141 N Atlantic Blvd",
+        "address2": "Ste 112",
+        "address3": "",
+        "city": "Monterey Park",
+        "zip_code": "91754",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "141 N Atlantic Blvd",
+          "Ste 112",
+          "Monterey Park, CA 91754"
+        ]
+      },
+      "phone": "+16268720200",
+      "display_phone": "(626) 872-0200",
+      "distance": 17222.29647284519
+    },
+    {
+      "id": "FKfygibuy4l77jyuDUoOcA",
+      "alias": "milk-t-los-angeles-3",
+      "name": "MILK+T",
+      "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/nnZ-6p22wtx88ObXIW68lg/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/milk-t-los-angeles-3?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 1109,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        }
+      ],
+      "rating": 4.0,
+      "coordinates": {
+        "latitude": 34.0490233,
+        "longitude": -118.2415817
+      },
+      "transactions": [
+        "delivery",
+        "pickup"
+      ],
+      "price": "$",
+      "location": {
+        "address1": "310 E 2nd St",
+        "address2": null,
+        "address3": "",
+        "city": "Los Angeles",
+        "zip_code": "90012",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "310 E 2nd St",
+          "Los Angeles, CA 90012"
+        ]
+      },
+      "phone": "+13238841164",
+      "display_phone": "(323) 884-1164",
+      "distance": 7489.9892126319755
+    },
+    {
+      "id": "05w6CgsfTVfN9nKqqjwRMg",
+      "alias": "yifang-taiwan-fruit-tea-san-gabriel",
+      "name": "Yifang Taiwan Fruit Tea",
+      "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/v8lIbWLwsOgscdHeLpzZGg/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/yifang-taiwan-fruit-tea-san-gabriel?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 324,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        },
+        {
+          "alias": "tea",
+          "title": "Tea Rooms"
+        },
+        {
+          "alias": "juicebars",
+          "title": "Juice Bars & Smoothies"
+        }
+      ],
+      "rating": 4.0,
+      "coordinates": {
+        "latitude": 34.0796807,
+        "longitude": -118.0934797
+      },
+      "transactions": [
+        "delivery",
+        "pickup"
+      ],
+      "price": "$",
+      "location": {
+        "address1": "534 E Valley Blvd",
+        "address2": "Unit 6",
+        "address3": "",
+        "city": "San Gabriel",
+        "zip_code": "91776",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "534 E Valley Blvd",
+          "Unit 6",
+          "San Gabriel, CA 91776"
+        ]
+      },
+      "phone": "+16268726884",
+      "display_phone": "(626) 872-6884",
+      "distance": 21087.64916699812
+    },
+    {
+      "id": "wjg2JexVIAtCNqPbzVhElw",
+      "alias": "wushiland-boba-los-angeles-2",
+      "name": "Wushiland Boba",
+      "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/-cc2-payKloqBYS3LITf-A/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/wushiland-boba-los-angeles-2?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 207,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        }
+      ],
+      "rating": 4.0,
+      "coordinates": {
+        "latitude": 34.059247,
+        "longitude": -118.419909
+      },
+      "transactions": [],
+      "price": "$$",
+      "location": {
+        "address1": "10250 Santa Monica Blvd",
+        "address2": "Ste 1",
+        "address3": null,
+        "city": "Los Angeles",
+        "zip_code": "90067",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "10250 Santa Monica Blvd",
+          "Ste 1",
+          "Los Angeles, CA 90067"
+        ]
+      },
+      "phone": "+14243821060",
+      "display_phone": "(424) 382-1060",
+      "distance": 9080.077834392321
+    },
+    {
+      "id": "NfEf4e9mWwxTrfYi7ASWPg",
+      "alias": "teaspoon-los-angeles",
+      "name": "Teaspoon",
+      "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/k2lmJ1VxWkzFmn0fRwR4kA/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/teaspoon-los-angeles?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 87,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        }
+      ],
+      "rating": 4.0,
+      "coordinates": {
+        "latitude": 34.04125,
+        "longitude": -118.44411
+      },
+      "transactions": [
+        "delivery",
+        "pickup"
+      ],
+      "location": {
+        "address1": "1947 Sawtelle Blvd",
+        "address2": "Unit E",
+        "address3": null,
+        "city": "Los Angeles",
+        "zip_code": "90025",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "1947 Sawtelle Blvd",
+          "Unit E",
+          "Los Angeles, CA 90025"
+        ]
+      },
+      "phone": "+14246528866",
+      "display_phone": "(424) 652-8866",
+      "distance": 11560.798935887975
+    },
+    {
+      "id": "n7rMVLQXO-KNqouHYHZrew",
+      "alias": "oinkmoo-tea-bar-pasadena",
+      "name": "OinkMoo Tea Bar",
+      "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/OX5z7woQRnQ-QZtmcXm8KQ/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/oinkmoo-tea-bar-pasadena?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 318,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        },
+        {
+          "alias": "coffee",
+          "title": "Coffee & Tea"
+        },
+        {
+          "alias": "juicebars",
+          "title": "Juice Bars & Smoothies"
+        }
+      ],
+      "rating": 4.0,
+      "coordinates": {
+        "latitude": 34.13931,
+        "longitude": -118.13179
+      },
+      "transactions": [
+        "delivery",
+        "pickup"
+      ],
+      "price": "$$",
+      "location": {
+        "address1": "380 S Lake Ave",
+        "address2": "Unit 107",
+        "address3": "",
+        "city": "Pasadena",
+        "zip_code": "91101",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "380 S Lake Ave",
+          "Unit 107",
+          "Pasadena, CA 91101"
+        ]
+      },
+      "phone": "+16264608416",
+      "display_phone": "(626) 460-8416",
+      "distance": 19477.743491780835
+    },
+    {
+      "id": "fyg8FBlPqJsjF6-Nn-ka5g",
+      "alias": "chun-feng-sugar-los-angeles-3",
+      "name": "Chun Feng Sugar",
+      "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/9ZSoQaV7IVb8TOZlM4Bhvw/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/chun-feng-sugar-los-angeles-3?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 165,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        },
+        {
+          "alias": "coffee",
+          "title": "Coffee & Tea"
+        }
+      ],
+      "rating": 3.5,
+      "coordinates": {
+        "latitude": 34.063458,
+        "longitude": -118.292689
+      },
+      "transactions": [
+        "delivery",
+        "pickup"
+      ],
+      "price": "$$",
+      "location": {
+        "address1": "600 S New Hampshire Ave",
+        "address2": null,
+        "address3": "",
+        "city": "Los Angeles",
+        "zip_code": "90005",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "600 S New Hampshire Ave",
+          "Los Angeles, CA 90005"
+        ]
+      },
+      "phone": "+12133185299",
+      "display_phone": "(213) 318-5299",
+      "distance": 2656.5477418589007
+    },
+    {
+      "id": "38KZ99iClZ6rqe1Mc-atXg",
+      "alias": "chicha-san-chen-san-gabriel-3",
+      "name": "Chicha San Chen",
+      "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/0zKhQLChNcSQ0gHJGvaXLg/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/chicha-san-chen-san-gabriel-3?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 555,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        },
+        {
+          "alias": "taiwanese",
+          "title": "Taiwanese"
+        },
+        {
+          "alias": "tea",
+          "title": "Tea Rooms"
+        }
+      ],
+      "rating": 4.0,
+      "coordinates": {
+        "latitude": 34.08006,
+        "longitude": -118.10413
+      },
+      "transactions": [],
+      "price": "$",
+      "location": {
+        "address1": "301 W Valley Blvd",
+        "address2": "Ste 116",
+        "address3": "",
+        "city": "San Gabriel",
+        "zip_code": "91776",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "301 W Valley Blvd",
+          "Ste 116",
+          "San Gabriel, CA 91776"
+        ]
+      },
+      "phone": "+16267661512",
+      "display_phone": "(626) 766-1512",
+      "distance": 20102.095620272314
+    },
+    {
+      "id": "3jxnj21VdU8NdfyDrWjZcw",
+      "alias": "matcha-village-los-angeles",
+      "name": "Matcha Village",
+      "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/FmaX6aFgSNObAOXBpVwRPw/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/matcha-village-los-angeles?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 335,
+      "categories": [
+        {
+          "alias": "cafes",
+          "title": "Cafes"
+        },
+        {
+          "alias": "desserts",
+          "title": "Desserts"
+        },
+        {
+          "alias": "coffee",
+          "title": "Coffee & Tea"
+        }
+      ],
+      "rating": 4.0,
+      "coordinates": {
+        "latitude": 34.03804,
+        "longitude": -118.44089
+      },
+      "transactions": [
+        "delivery"
+      ],
+      "price": "$",
+      "location": {
+        "address1": "2202 S Sawtelle Blvd",
+        "address2": null,
+        "address3": "",
+        "city": "Los Angeles",
+        "zip_code": "90064",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "2202 S Sawtelle Blvd",
+          "Los Angeles, CA 90064"
+        ]
+      },
+      "phone": "+12538866874",
+      "display_phone": "(253) 886-6874",
+      "distance": 11312.765448492883
+    },
+    {
+      "id": "ycp_ZZkRBs4Dxw2ArqFuaw",
+      "alias": "aliya-lavaland-monterey-park",
+      "name": "Aliya Lavaland",
+      "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/5t6c0iWLOfEfmdCm7b6oQg/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/aliya-lavaland-monterey-park?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 97,
+      "categories": [
+        {
+          "alias": "bakeries",
+          "title": "Bakeries"
+        }
+      ],
+      "rating": 5.0,
+      "coordinates": {
+        "latitude": 34.064091,
+        "longitude": -118.1346
+      },
+      "transactions": [],
+      "location": {
+        "address1": "141 N Atlantic Blvd",
+        "address2": "Ste 103",
+        "address3": "",
+        "city": "Monterey Park",
+        "zip_code": "91754",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "141 N Atlantic Blvd",
+          "Ste 103",
+          "Monterey Park, CA 91754"
+        ]
+      },
+      "phone": "+16268726856",
+      "display_phone": "(626) 872-6856",
+      "distance": 17212.64250649062
+    },
+    {
+      "id": "1P0g9M4-TyTYK2Pj5-Xvlw",
+      "alias": "aiyu-cha-westminster",
+      "name": "Aiyu Cha",
+      "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/GYTb7hFFU9VCCb_J2hGPmg/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/aiyu-cha-westminster?adjust_creative=iFoz1pUneImYeIiBX1hF4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=iFoz1pUneImYeIiBX1hF4g",
+      "review_count": 284,
+      "categories": [
+        {
+          "alias": "bubbletea",
+          "title": "Bubble Tea"
+        }
+      ],
+      "rating": 4.0,
+      "coordinates": {
+        "latitude": 33.72429967,
+        "longitude": -117.98849217
+      },
+      "transactions": [
+        "delivery"
+      ],
+      "price": "$$",
+      "location": {
+        "address1": "16472 Beach Blvd",
+        "address2": null,
+        "address3": "",
+        "city": "Westminster",
+        "zip_code": "92683",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+          "16472 Beach Blvd",
+          "Westminster, CA 92683"
+        ]
+      },
+      "phone": "+17146225666",
+      "display_phone": "(714) 622-5666",
+      "distance": 48492.13957798244
+    }
+  ],
+  "total": 61,
+  "region": {
+    "center": {
+      "longitude": -118.32138061523438,
+      "latitude": 34.0615895441259
+    }
+  }
+}

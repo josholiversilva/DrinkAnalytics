@@ -20,7 +20,6 @@ export default function Home() {
       <div className={contentStyles.box}>
         <Content />
       </div>
-      <h1>Hello World</h1>
     </>
   )
 }
