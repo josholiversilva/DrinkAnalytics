@@ -1,29 +1,25 @@
 import React, { useState } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 import inner from '../styles/Inner.module.css'
 import styles from '../styles/Layout.module.css'
 
 const Content = (props) => {
-    const [counter, setCounter] = useState(0);
-    const increment = () => {
-        counter++
-        setCounter(counter)
-    }
     return (
         <>
             <div className={inner.top_box}>
-                <div className={styles.card2}>
-                    <p>150 Calories</p>
+                <div className={styles.card2}> 
+                    <Link href="/health">150 Calories</Link>
                 </div>
-                <div className={styles.card2}>
-                    <p>240 USD Spent</p>
-                </div>
-                <div className={styles.card2}>
-                    <p>50 Drinks</p>
-                </div>
-                <div className={styles.card2}>
-                    <p>20 Companies</p>
-                </div>
+                <button className={styles.card2} href="/spending">
+                    <Link href="/spending">240 USD Spent</Link>
+                </button>
+                <button className={styles.card2} href="/drinks">
+                    <Link href="/drinks">50 Drinks</Link>
+                </button>
+                <button className={styles.card2} href="/restaurants">
+                    <Link href="/restaurants">20 Restaurants</Link>
+                </button>
             </div>
 
             <div className={inner.top_left_box}>
@@ -45,7 +41,7 @@ const Content = (props) => {
             </div>
 
             <div className={inner.mid_left_box}>
-                <p>Top Company</p>
+                <p>Top Restaurant</p>
                 <div className={inner.bottom_left_box_content_pic}>
                     <div className={inner.pic}>
                         <Image className={inner.round}
@@ -74,7 +70,7 @@ const Content = (props) => {
                 </div>
 
                 <div className={styles.card} style={{position: 'relative', height: '50%', float: 'left', clear: 'both', display:'inline-block'}}>
-                    <h1>Top 3 Companies</h1>
+                    <h1>Top 3 Restaurants</h1>
                     1. Sunright Tea Studio<br />
                     2. 7 Leaves<br />
                     3. AU<br />
