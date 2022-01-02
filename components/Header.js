@@ -7,9 +7,14 @@ const Header = () => {
             <p className={headerStyles.left_txt}>
                 <Link href='/'>Home</Link>
             </p>
+            <span className={headerStyles.left_txt}> | </span>
+
+            <p className={headerStyles.left_txt}>
+                <Link href='/form'>Form</Link>
+            </p>
 
             <p className={headerStyles.right_txt}>
-                <Link href='/form'>Form</Link>
+                Login Info
             </p>
         </div>
     )

@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function Home() {
   const { time } = useSelector(state => state.timeType)
   const dispatch = useDispatch();
-  console.log(time)
 
   // Display the current time type selected from user
   function handleCurrent() {

@@ -1,31 +1,113 @@
 import React, { useState } from 'react'
 import { Row, Col, Button, Form } from 'react-bootstrap'
 import ReactStars from "react-rating-stars-component";
+import CurrencyInput from 'react-currency-input-field';
 
 const form = () => {
     const [type, setType] = useState("California");
+
+    // Individual Form State
+    const [drink, setDrink] = useState(),
+        onDrink = ({target:{value}}) => {
+            setDrink(value)
+            console.log(value)
+        }
+    const [cost, setCost] = useState(),
+        onCost = (value, name) => {
+            setCost(value)
+            console.log(value, name)
+        }
+    const [restaurant, setRestaurant] = useState(),
+        onRestaurant = ({target:{value}}) => {
+            setRestaurant(value)
+            console.log(value)
+        }
+    const [city, setCity] = useState(),
+        onCity = ({target:{value}}) => {
+            setCity(value)
+            console.log(value)
+        }
+    const [state, setState] = useState(),
+        onState = ({target:{value}}) => {
+            setState(value)
+            console.log(value)
+        }
+    const [desc, setDesc] = useState(),
+        onDesc = ({target:{value}}) => {
+            setDesc(value)
+            console.log(value)
+        }
+    const [rating, setRating] = useState(),
+        onRating = (newRating) => {
+            console.log(newRating)
+            setRating(newRating)
+        }
+
+    // Form Object
+    const formVals = {
+        drink: drink,
+        cost: cost,
+        restaurant: restaurant, 
+        city: city, 
+        state: state, 
+        desc: desc, 
+        rating: rating
+    }
+
+    // Submit Handler
+    const onFormSubmit = e => {
+        e.preventDefault()
+        for (var key in formVals) {
+            var value = formVals[key]
+            console.log(`${key}=${value}`)
+        }
+        resetForm()
+    }
+
+    const resetForm = () => {
+        setDrink()
+        setCost()
+        setRestaurant()
+        setCity()
+        setState()
+        setDesc()
+        setRating()
+    }
 
     return (
         <>
           <div style={{paddingLeft: "2em", paddingRight: "2em"}}>
             <div><h1>Boba Entry<br /><br /></h1></div>
-              <Form>
+              <Form onSubmit={onFormSubmit}>
                 <Row className="mb-3">
                   <Form.Group as={Col}>
                     <Form.Label>Drink</Form.Label>
-                    <Form.Control required placeholder="Oolong Milk Tea" />
+                    <Form.Control required placeholder="Oolong Milk Tea" onChange={onDrink}/>
                   </Form.Group>
 
                   <Form.Group as={Col}>
-                    <Form.Label>Restaurant</Form.Label>
-                    <Form.Control required placeholder="Wushiland" />
+                    <Form.Label>Drink Cost</Form.Label>
+                    <CurrencyInput 
+                        id="cost"
+                        name="cost"
+                        prefix="$"
+                        decimalsLimit={2}
+                        onValueChange={(value, name)=>onCost(value, name)}
+                    />
                   </Form.Group>
+                </Row>
+
+                <Row className="mb-1">
+                    <Form.Group as={Col}>
+                        <Form.Label>Restaurant</Form.Label>
+                        <Form.Control required placeholder="Wushiland" onChange={onRestaurant} />
+                    </Form.Group>
                 </Row>
 
                 <Row className="mb-3">
                   <Form.Group as={Col}>
                     <Form.Label>City</Form.Label>
-                    <Form.Control />
+                    <Form.Control onChange={onCity} />
                   </Form.Group>
   
                   <Form.Group as={Col}>
@@ -35,7 +117,8 @@ const form = () => {
                         value={type}
                         onChange={e => {
                           console.log("e.target.value", e.target.value);
-                          setType(e.target.value)
+                          setType(e.target.value);
+                          onState();
                         }}
                       >
                         <option value="CA">California</option>
@@ -48,26 +131,16 @@ const form = () => {
                 <Row className="mb-1">
                     <Form.Group as={Col}>
                         <Form.Label>Description</Form.Label>
-                        <Form.Control as="textarea" rows="2" name="description" />
+                        <Form.Control as="textarea" rows="2" name="description" onChange={onDesc} />
                     </Form.Group>
                 </Row>
 
                 <ReactStars
+                    onChange={onRating}
                     size={50}
                     count={5}
                     isHalf={true}
                 />
-
-                <Row className="mb-1">
-                    <Form.Group as={Col}>
-                        <Form.Control
-                            required 
-                            as={ReactStars} 
-                            size={50} 
-                            count={5} 
-                            isHalf={true} />
-                    </Form.Group>
-                </Row>
 
                 <div style={{paddingTop:"10vh"}} className="d-grid gap-2">
                   <Button variant="primary" type="submit">

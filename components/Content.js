@@ -37,11 +37,12 @@ const Content = (props) => {
                 <div className={inner.top_left_box_content_desc}>
                     <h2>Mango Milk Tea</h2>
                     <p>25% sugar, less ice, sub cane sugar with honey, honey boba</p>
+                    <p>100 Drinks | 400$ Spent</p>
                 </div>
             </div>
 
             <div className={inner.mid_left_box}>
-                <p>Top Restaurant</p>
+                <p>Favorite Restaurant</p>
                 <div className={inner.bottom_left_box_content_pic}>
                     <div className={inner.pic}>
                         <Image className={inner.round}
@@ -55,9 +56,7 @@ const Content = (props) => {
                 <div className={inner.top_left_box_content_desc}>
                     <h2>Sunright Tea Bar</h2>
                     <p>City, State</p>
-                    <p>4 Stars</p>
-                    <p>Review Count</p>
-                    <p>2 Dollar Signs </p>
+                    <p>4Stars | $$ | 1000</p>
                 </div>
             </div>
  
