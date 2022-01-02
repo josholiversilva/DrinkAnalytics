@@ -1,14 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Row, Col, Button, Form } from 'react-bootstrap'
 import ReactStars from "react-rating-stars-component";
 import CurrencyInput from 'react-currency-input-field';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const form = () => {
-    const [type, setType] = useState("California");
+    const [usState, setUSState] = useState('California');
+    const [startDate, setStartDate] = useState(new Date());
+
+    // workaround for react-stars clearing
+    // https://github.com/n49/react-stars/issues/68
+    const [starsKey, setStarsKey] = useState(Math.random())
 
     // Individual Form State
     const [drink, setDrink] = useState(),
-        onDrink = ({target:{value}}) => {
+    onDrink = ({target:{value}}) => {
             setDrink(value)
             console.log(value)
         }
@@ -27,20 +35,14 @@ const form = () => {
             setCity(value)
             console.log(value)
         }
-    const [state, setState] = useState(),
-        onState = ({target:{value}}) => {
-            setState(value)
-            console.log(value)
-        }
     const [desc, setDesc] = useState(),
         onDesc = ({target:{value}}) => {
             setDesc(value)
             console.log(value)
         }
-    const [rating, setRating] = useState(),
+    const [rating, setRating] = useState(Math.random()),
         onRating = (newRating) => {
             console.log(newRating)
-            setRating(newRating)
         }
 
     // Form Object
@@ -49,7 +51,8 @@ const form = () => {
         cost: cost,
         restaurant: restaurant, 
         city: city, 
-        state: state, 
+        state: usState, 
+        date: startDate,
         desc: desc, 
         rating: rating
     }
@@ -57,21 +60,29 @@ const form = () => {
     // Submit Handler
     const onFormSubmit = e => {
         e.preventDefault()
+        e.target.reset()
+        console.log(e.target)
+        console.log(e)
         for (var key in formVals) {
             var value = formVals[key]
             console.log(`${key}=${value}`)
         }
         resetForm()
+        alert("Form Submitted")
     }
 
+    // Submit Workflow
     const resetForm = () => {
+        console.log("RESEETTTINNG FORM")
         setDrink()
-        setCost()
+        setCost('')
         setRestaurant()
         setCity()
-        setState()
-        setDesc()
-        setRating()
+        setUSState('California')
+        setStartDate(new Date())
+        setDesc('')
+        setStarsKey(Math.random());
+        setRating('');
     }
 
     return (
@@ -82,65 +93,149 @@ const form = () => {
                 <Row className="mb-3">
                   <Form.Group as={Col}>
                     <Form.Label>Drink</Form.Label>
-                    <Form.Control required placeholder="Oolong Milk Tea" onChange={onDrink}/>
+                    <Form.Control 
+                        required 
+                        value={drink}
+                        placeholder="Oolong Milk Tea" 
+                        onChange={onDrink}
+                    />
                   </Form.Group>
 
                   <Form.Group as={Col}>
                     <Form.Label>Drink Cost</Form.Label>
                     <CurrencyInput 
+                        required
+                        value={cost}
+                        className="form-control"
                         id="cost"
                         name="cost"
                         prefix="$"
+                        placeholder="$4.50"
                         decimalsLimit={2}
                         onValueChange={(value, name)=>onCost(value, name)}
                     />
                   </Form.Group>
                 </Row>
 
-                <Row className="mb-1">
+                <Row className="mb-3">
                     <Form.Group as={Col}>
                         <Form.Label>Restaurant</Form.Label>
-                        <Form.Control required placeholder="Wushiland" onChange={onRestaurant} />
+                        <Form.Control 
+                            required 
+                            value={restaurant}
+                            placeholder="Wushiland" 
+                            onChange={onRestaurant} />
                     </Form.Group>
                 </Row>
 
                 <Row className="mb-3">
                   <Form.Group as={Col}>
                     <Form.Label>City</Form.Label>
-                    <Form.Control onChange={onCity} />
+                    <Form.Control 
+                        value={city}
+                        onChange={onCity} 
+                    />
                   </Form.Group>
   
                   <Form.Group as={Col}>
                     <Form.Label>State</Form.Label>
                       <Form.Control 
                         as="select"
-                        value={type}
+                        value={usState}
                         onChange={e => {
-                          console.log("e.target.value", e.target.value);
-                          setType(e.target.value);
-                          onState();
+                          setUSState(e.target.value);
                         }}
                       >
-                        <option value="CA">California</option>
-                        <option value="AL">Alabama</option>
-                        <option value="AZ">Arizona</option>
+			            <option value="CA">California</option>
+                        <option value="AK">Alaska</option>
+			            <option value="AL">Alabama</option>
+			            <option value="AR">Arkansas</option>
+			            <option value="AZ">Arizona</option>
+			            <option value="CO">Colorado</option>
+			            <option value="CT">Connecticut</option>
+			            <option value="DC">District of Columbia</option>
+			            <option value="DE">Delaware</option>
+			            <option value="FL">Florida</option>
+			            <option value="GA">Georgia</option>
+			            <option value="HI">Hawaii</option>
+			            <option value="IA">Iowa</option>
+			            <option value="ID">Idaho</option>
+			            <option value="IL">Illinois</option>
+			            <option value="IN">Indiana</option>
+			            <option value="KS">Kansas</option>
+			            <option value="KY">Kentucky</option>
+			            <option value="LA">Louisiana</option>
+			            <option value="MA">Massachusetts</option>
+			            <option value="MD">Maryland</option>
+			            <option value="ME">Maine</option>
+			            <option value="MI">Michigan</option>
+			            <option value="MN">Minnesota</option>
+			            <option value="MO">Missouri</option>
+			            <option value="MS">Mississippi</option>
+			            <option value="MT">Montana</option>
+			            <option value="NC">North Carolina</option>
+			            <option value="ND">North Dakota</option>
+			            <option value="NE">Nebraska</option>
+			            <option value="NH">New Hampshire</option>
+			            <option value="NJ">New Jersey</option>
+			            <option value="NM">New Mexico</option>
+			            <option value="NV">Nevada</option>
+			            <option value="NY">New York</option>
+			            <option value="OH">Ohio</option>
+			            <option value="OK">Oklahoma</option>
+			            <option value="OR">Oregon</option>
+			            <option value="PA">Pennsylvania</option>
+			            <option value="PR">Puerto Rico</option>
+			            <option value="RI">Rhode Island</option>
+			            <option value="SC">South Carolina</option>
+			            <option value="SD">South Dakota</option>
+			            <option value="TN">Tennessee</option>
+			            <option value="TX">Texas</option>
+			            <option value="UT">Utah</option>
+			            <option value="VA">Virginia</option>
+			            <option value="VT">Vermont</option>
+			            <option value="WA">Washington</option>
+			            <option value="WI">Wisconsin</option>
+			            <option value="WV">West Virginia</option>
+			            <option value="WY">Wyoming</option>
                       </Form.Control>
+                  </Form.Group>
+
+                  <Form.Group as={Col}>
+                    <Form.Label>Date</Form.Label>
+                    <DatePicker
+                        className="form-control"
+                        selected={startDate}
+                        onChange={(date)=>setStartDate(date)}
+                    />
                   </Form.Group>
                 </Row>
 
                 <Row className="mb-1">
                     <Form.Group as={Col}>
                         <Form.Label>Description</Form.Label>
-                        <Form.Control as="textarea" rows="2" name="description" onChange={onDesc} />
+                        <Form.Control 
+                            value={desc}
+                            as="textarea" 
+                            rows="2" 
+                            name="description" 
+                            onChange={onDesc} 
+                        />
                     </Form.Group>
                 </Row>
 
-                <ReactStars
-                    onChange={onRating}
-                    size={50}
-                    count={5}
-                    isHalf={true}
-                />
+                <Row className="mb-1">
+                    <Form.Group as={Col}>
+                        <ReactStars
+                            key={starsKey}
+                            value={rating}
+                            onChange={onRating}
+                            size={50}
+                            count={5}
+                            isHalf={true}
+                        />
+                    </Form.Group>
+                </Row>
 
                 <div style={{paddingTop:"10vh"}} className="d-grid gap-2">
                   <Button variant="primary" type="submit">
@@ -156,20 +251,5 @@ const form = () => {
         </>
     )
 }
-    /*
-    return (
-        <div className='max-w-xs my-2 overflow-hidden rounded shadow-lg'>
-            <div className='px-6 py-4'>
-            <div className='mb-2 text-xl font-bold'>Contact us</div>
-            <form className='flex flex-col'>
-                <label htmlFor='name' className='mb-2 italic'>Name</label>
-                <input className='mb-4 border-b-2' id='name' name='name' type='text' autoComplete='name' required />
-                <button type='submit' className='px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700'>Submit</button>
-            </form>
-            </div>
-        </div>
-    )
-}
-*/
 
 export default form 
