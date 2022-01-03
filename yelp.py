@@ -1,7 +1,7 @@
 import requests
 import json
 
-with open('/Users/joshsilva/Desktop/yelp.txt') as f:
+with open('/Users/joshsilva/Desktop/boba_notes/yelp.txt') as f:
     api, clientid = f.read().splitlines()
     
 header = {'Content-Type':'application/json', 'Authorization':'Bearer {}'.format(api)}

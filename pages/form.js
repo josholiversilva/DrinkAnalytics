@@ -3,6 +3,8 @@ import { Row, Col, Button, Form } from 'react-bootstrap'
 import ReactStars from "react-rating-stars-component";
 import CurrencyInput from 'react-currency-input-field';
 import DatePicker from "react-datepicker";
+import { Menu, MenuItem, Typeahead } from 'react-bootstrap-typeahead';
+import { getAllDrinks } from '../api/drinks'
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -10,15 +12,26 @@ const form = () => {
     const [usState, setUSState] = useState('California');
     const [startDate, setStartDate] = useState(new Date());
 
+    const getAllDrinks = async () => {
+      const action = await fetch('localhost:3001/drinks')
+      const data = await action.json()
+      const drinks = data.map((drink) => {
+        return drink.name
+      })
+      console.log(drinks)
+      setDrinkOpts(drinks)
+    }
+
     // workaround for react-stars clearing
     // https://github.com/n49/react-stars/issues/68
     const [starsKey, setStarsKey] = useState(Math.random())
 
     // Individual Form State
+    const [drinkOpts, setDrinkOpts] = useState([])
     const [drink, setDrink] = useState(),
-    onDrink = ({target:{value}}) => {
-            setDrink(value)
-            console.log(value)
+        onDrink = (value) => {
+          console.log(value)
+          value.length > 0 ? setDrink(value[0].label) : setDrink()
         }
     const [cost, setCost] = useState(),
         onCost = (value, name) => {
@@ -26,10 +39,10 @@ const form = () => {
             console.log(value, name)
         }
     const [restaurant, setRestaurant] = useState(),
-        onRestaurant = ({target:{value}}) => {
-            setRestaurant(value)
-            console.log(value)
-        }
+      onRestaurant = (value) => {
+        console.log(value)
+        value.length > 0 ? setRestaurant(value[0].label) : setRestaurant()
+      }
     const [city, setCity] = useState(),
         onCity = ({target:{value}}) => {
             setCity(value)
@@ -40,7 +53,7 @@ const form = () => {
             setDesc(value)
             console.log(value)
         }
-    const [rating, setRating] = useState(Math.random()),
+    const [rating, setRating] = useState(),
         onRating = (newRating) => {
             console.log(newRating)
         }
@@ -59,24 +72,22 @@ const form = () => {
 
     // Submit Handler
     const onFormSubmit = e => {
-        e.preventDefault()
         e.target.reset()
-        console.log(e.target)
-        console.log(e)
         for (var key in formVals) {
             var value = formVals[key]
             console.log(`${key}=${value}`)
         }
-        resetForm()
+        // resetForm()
         alert("Form Submitted")
     }
 
     // Submit Workflow
+    /*
     const resetForm = () => {
         console.log("RESEETTTINNG FORM")
         setDrink()
         setCost('')
-        setRestaurant()
+        setRestaurant('')
         setCity()
         setUSState('California')
         setStartDate(new Date())
@@ -84,6 +95,7 @@ const form = () => {
         setStarsKey(Math.random());
         setRating('');
     }
+    */
 
     return (
         <>
@@ -93,12 +105,15 @@ const form = () => {
                 <Row className="mb-3">
                   <Form.Group as={Col}>
                     <Form.Label>Drink</Form.Label>
-                    <Form.Control 
-                        required 
+                      <Typeahead
+                        allowNew
                         value={drink}
-                        placeholder="Oolong Milk Tea" 
+                        id="custom-selections-example"
+                        newSelectionPrefix="Add a new item: "
+                        options={drinkOpts}
+                        placeholder="Oolong Milk Tea"
                         onChange={onDrink}
-                    />
+                      />
                   </Form.Group>
 
                   <Form.Group as={Col}>
@@ -110,7 +125,7 @@ const form = () => {
                         id="cost"
                         name="cost"
                         prefix="$"
-                        placeholder="$4.50"
+                        placeholder="4.50"
                         decimalsLimit={2}
                         onValueChange={(value, name)=>onCost(value, name)}
                     />
@@ -120,11 +135,15 @@ const form = () => {
                 <Row className="mb-3">
                     <Form.Group as={Col}>
                         <Form.Label>Restaurant</Form.Label>
-                        <Form.Control 
-                            required 
-                            value={restaurant}
-                            placeholder="Wushiland" 
-                            onChange={onRestaurant} />
+                        <Typeahead
+                          allowNew
+                          value={restaurant}
+                          id="custom-selections-example"
+                          newSelectionPrefix="Add a new item: "
+                          options={[]}
+                          placeholder="Wushiland"
+                          onChange={onRestaurant}
+                        />
                     </Form.Group>
                 </Row>
 
