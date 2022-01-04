@@ -1,26 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Row, Col, Button, Form } from 'react-bootstrap'
 import ReactStars from "react-rating-stars-component";
 import CurrencyInput from 'react-currency-input-field';
 import DatePicker from "react-datepicker";
-import { Menu, MenuItem, Typeahead } from 'react-bootstrap-typeahead';
-import { getAllDrinks } from '../api/drinks'
+import { Typeahead } from 'react-bootstrap-typeahead';
+import { createNewRestaurant, updateRestaurant } from '../features/restaurant/restaurantAPI'
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const form = () => {
-    const [usState, setUSState] = useState('California');
+const form = ({ drinks, restaurants }) => {
+    const [usState, setUSState] = useState('CA');
     const [startDate, setStartDate] = useState(new Date());
-
-    const getAllDrinks = async () => {
-      const action = await fetch('localhost:3001/drinks')
-      const data = await action.json()
-      const drinks = data.map((drink) => {
-        return drink.name
-      })
-      console.log(drinks)
-      setDrinkOpts(drinks)
-    }
 
     // workaround for react-stars clearing
     // https://github.com/n49/react-stars/issues/68
@@ -31,17 +21,18 @@ const form = () => {
     const [drink, setDrink] = useState(),
         onDrink = (value) => {
           console.log(value)
-          value.length > 0 ? setDrink(value[0].label) : setDrink()
+          value.length > 0 ? setDrink(value[0]) : setDrink()
         }
     const [cost, setCost] = useState(),
         onCost = (value, name) => {
             setCost(value)
             console.log(value, name)
         }
+    const [restaurantOpts, setRestaurantOpts] = useState([])
     const [restaurant, setRestaurant] = useState(),
       onRestaurant = (value) => {
         console.log(value)
-        value.length > 0 ? setRestaurant(value[0].label) : setRestaurant()
+        value.length > 0 ? setRestaurant(value[0]) : setRestaurant()
       }
     const [city, setCity] = useState(),
         onCity = ({target:{value}}) => {
@@ -56,32 +47,58 @@ const form = () => {
     const [rating, setRating] = useState(),
         onRating = (newRating) => {
             console.log(newRating)
+            setRating(newRating)
         }
+
+    useEffect(() => {
+      var drinkNames = drinks.map(drink => {
+        return drink.name
+      })
+      var restaurantNames = restaurants.map(restaurant => {
+        return restaurant.name
+      })
+      console.log(drinkNames, restaurantNames)
+      setDrinkOpts(drinkNames)
+      setRestaurantOpts(restaurantNames)
+    }, [])
 
     // Form Object
     const formVals = {
-        drink: drink,
+        name: drink,
         cost: cost,
         restaurant: restaurant, 
         city: city, 
         state: usState, 
         date: startDate,
-        desc: desc, 
+        description: desc, 
         rating: rating
     }
 
     // Submit Handler
     const onFormSubmit = e => {
+        e.preventDefault()
         e.target.reset()
         for (var key in formVals) {
+            console.log(key)
             var value = formVals[key]
             console.log(`${key}=${value}`)
         }
         // resetForm()
+        sendToDb(formVals)
         alert("Form Submitted")
     }
 
-    // Submit Workflow
+    const sendToDb = async () => {
+      // First Create/Update Restaurants (B/C restaurants have own table)
+      const restaurantVals = {restaurant: restaurant, rating: rating}
+      restaurantOpts.indexOf(restaurant) < 0 ? 
+        createNewRestaurant(restaurantVals) :
+          updateRestaurant(restaurantVals)
+      
+      // Then create new drink
+      createNewDrink(formVals)
+    }
+
     /*
     const resetForm = () => {
         console.log("RESEETTTINNG FORM")
@@ -89,7 +106,7 @@ const form = () => {
         setCost('')
         setRestaurant('')
         setCity()
-        setUSState('California')
+        setUSState('CA')
         setStartDate(new Date())
         setDesc('')
         setStarsKey(Math.random());
@@ -109,10 +126,11 @@ const form = () => {
                         allowNew
                         value={drink}
                         id="custom-selections-example"
-                        newSelectionPrefix="Add a new item: "
+                        newSelectionPrefix="New Drink: "
                         options={drinkOpts}
                         placeholder="Oolong Milk Tea"
                         onChange={onDrink}
+                        inputProps={{ required: true }}
                       />
                   </Form.Group>
 
@@ -139,10 +157,11 @@ const form = () => {
                           allowNew
                           value={restaurant}
                           id="custom-selections-example"
-                          newSelectionPrefix="Add a new item: "
-                          options={[]}
+                          newSelectionPrefix="New Restaurant: "
+                          options={restaurantOpts}
                           placeholder="Wushiland"
                           onChange={onRestaurant}
+                          inputProps={{ required: true }}
                         />
                     </Form.Group>
                 </Row>
@@ -165,58 +184,58 @@ const form = () => {
                           setUSState(e.target.value);
                         }}
                       >
-			            <option value="CA">California</option>
+			                  <option value="CA">California</option>
                         <option value="AK">Alaska</option>
-			            <option value="AL">Alabama</option>
-			            <option value="AR">Arkansas</option>
-			            <option value="AZ">Arizona</option>
-			            <option value="CO">Colorado</option>
-			            <option value="CT">Connecticut</option>
-			            <option value="DC">District of Columbia</option>
-			            <option value="DE">Delaware</option>
-			            <option value="FL">Florida</option>
-			            <option value="GA">Georgia</option>
-			            <option value="HI">Hawaii</option>
-			            <option value="IA">Iowa</option>
-			            <option value="ID">Idaho</option>
-			            <option value="IL">Illinois</option>
-			            <option value="IN">Indiana</option>
-			            <option value="KS">Kansas</option>
-			            <option value="KY">Kentucky</option>
-			            <option value="LA">Louisiana</option>
-			            <option value="MA">Massachusetts</option>
-			            <option value="MD">Maryland</option>
-			            <option value="ME">Maine</option>
-			            <option value="MI">Michigan</option>
-			            <option value="MN">Minnesota</option>
-			            <option value="MO">Missouri</option>
-			            <option value="MS">Mississippi</option>
-			            <option value="MT">Montana</option>
-			            <option value="NC">North Carolina</option>
-			            <option value="ND">North Dakota</option>
-			            <option value="NE">Nebraska</option>
-			            <option value="NH">New Hampshire</option>
-			            <option value="NJ">New Jersey</option>
-			            <option value="NM">New Mexico</option>
-			            <option value="NV">Nevada</option>
-			            <option value="NY">New York</option>
-			            <option value="OH">Ohio</option>
-			            <option value="OK">Oklahoma</option>
-			            <option value="OR">Oregon</option>
-			            <option value="PA">Pennsylvania</option>
-			            <option value="PR">Puerto Rico</option>
-			            <option value="RI">Rhode Island</option>
-			            <option value="SC">South Carolina</option>
-			            <option value="SD">South Dakota</option>
-			            <option value="TN">Tennessee</option>
-			            <option value="TX">Texas</option>
-			            <option value="UT">Utah</option>
-			            <option value="VA">Virginia</option>
-			            <option value="VT">Vermont</option>
-			            <option value="WA">Washington</option>
-			            <option value="WI">Wisconsin</option>
-			            <option value="WV">West Virginia</option>
-			            <option value="WY">Wyoming</option>
+			                  <option value="AL">Alabama</option>
+			                  <option value="AR">Arkansas</option>
+			                  <option value="AZ">Arizona</option>
+			                  <option value="CO">Colorado</option>
+			                  <option value="CT">Connecticut</option>
+			                  <option value="DC">District of Columbia</option>
+			                  <option value="DE">Delaware</option>
+			                  <option value="FL">Florida</option>
+			                  <option value="GA">Georgia</option>
+			                  <option value="HI">Hawaii</option>
+			                  <option value="IA">Iowa</option>
+			                  <option value="ID">Idaho</option>
+			                  <option value="IL">Illinois</option>
+			                  <option value="IN">Indiana</option>
+			                  <option value="KS">Kansas</option>
+			                  <option value="KY">Kentucky</option>
+			                  <option value="LA">Louisiana</option>
+			                  <option value="MA">Massachusetts</option>
+			                  <option value="MD">Maryland</option>
+			                  <option value="ME">Maine</option>
+			                  <option value="MI">Michigan</option>
+			                  <option value="MN">Minnesota</option>
+			                  <option value="MO">Missouri</option>
+			                  <option value="MS">Mississippi</option>
+			                  <option value="MT">Montana</option>
+			                  <option value="NC">North Carolina</option>
+			                  <option value="ND">North Dakota</option>
+			                  <option value="NE">Nebraska</option>
+			                  <option value="NH">New Hampshire</option>
+			                  <option value="NJ">New Jersey</option>
+			                  <option value="NM">New Mexico</option>
+			                  <option value="NV">Nevada</option>
+			                  <option value="NY">New York</option>
+			                  <option value="OH">Ohio</option>
+			                  <option value="OK">Oklahoma</option>
+			                  <option value="OR">Oregon</option>
+			                  <option value="PA">Pennsylvania</option>
+			                  <option value="PR">Puerto Rico</option>
+			                  <option value="RI">Rhode Island</option>
+			                  <option value="SC">South Carolina</option>
+			                  <option value="SD">South Dakota</option>
+			                  <option value="TN">Tennessee</option>
+			                  <option value="TX">Texas</option>
+			                  <option value="UT">Utah</option>
+			                  <option value="VA">Virginia</option>
+			                  <option value="VT">Vermont</option>
+			                  <option value="WA">Washington</option>
+			                  <option value="WI">Wisconsin</option>
+			                  <option value="WV">West Virginia</option>
+			                  <option value="WY">Wyoming</option>
                       </Form.Control>
                   </Form.Group>
 
@@ -246,12 +265,14 @@ const form = () => {
                 <Row className="mb-1">
                     <Form.Group as={Col}>
                         <ReactStars
+                            inputProps={{ required: true }}
                             key={starsKey}
                             value={rating}
                             onChange={onRating}
                             size={50}
                             count={5}
                             isHalf={true}
+                            activeColor={"cyan"}
                         />
                     </Form.Group>
                 </Row>
@@ -269,6 +290,21 @@ const form = () => {
             </div>
         </>
     )
+}
+
+export async function getStaticProps() {
+  const res = await fetch('http://localhost:3001/drinks')
+  const drinks = await res.json()
+
+  const res_2 = await fetch('http://localhost:3001/restaurants')
+  const restaurants = await res_2.json()
+
+  return {
+    props: {
+      drinks,
+      restaurants
+    }
+  }
 }
 
 export default form 
