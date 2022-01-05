@@ -11,7 +11,6 @@ const getSpending = (timeType, drinks) => {
             .map(drinkF => drinkF.cost)
             .reduce((a,b) => a+b, 0)
         return totalCost
-        
     }
     if (timeType == 'm') {
         const totalCost = drinks
@@ -24,7 +23,7 @@ const getSpending = (timeType, drinks) => {
         const nextMonday = getMonday(nextWeek(now))
         const lastMonday = getMonday(now)
         const totalCost = drinks
-            .filter(drink => lastMonday <= Date(drink.date).getDate <= nextMonday)
+            .filter(drink => lastMonday.getTime() <= new Date(drink.date).getTime() && new Date(drink.date).getTime() <= nextMonday.getTime())
             .map(drinkF => drinkF.cost)
             .reduce((a,b) => a+b, 0)
         return totalCost
