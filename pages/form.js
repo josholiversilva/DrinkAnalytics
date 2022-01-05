@@ -5,6 +5,7 @@ import CurrencyInput from 'react-currency-input-field';
 import DatePicker from "react-datepicker";
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { createNewRestaurant, updateRestaurant } from '../features/restaurant/restaurantAPI'
+import { createNewDrink } from '../features/drinks/drinksAPI'
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -21,18 +22,29 @@ const form = ({ drinks, restaurants }) => {
     const [drink, setDrink] = useState(),
         onDrink = (value) => {
           console.log(value)
-          value.length > 0 ? setDrink(value[0]) : setDrink()
+          if (typeof value[0] !== "string")
+            value.length > 0 ? setDrink(value[0].label) : setDrink()
+          else
+            value.length > 0 ? setDrink(value[0]) : setDrink()
         }
     const [cost, setCost] = useState(),
         onCost = (value, name) => {
             setCost(value)
             console.log(value, name)
         }
+    const [newRestaurant, setNewRestaurant] = useState(false)
     const [restaurantOpts, setRestaurantOpts] = useState([])
     const [restaurant, setRestaurant] = useState(),
       onRestaurant = (value) => {
         console.log(value)
-        value.length > 0 ? setRestaurant(value[0]) : setRestaurant()
+        if (typeof value[0] !== "string") {
+          setNewRestaurant(true)
+          value.length > 0 ? setRestaurant(value[0].label) : setRestaurant()
+        }
+        else {
+          setNewRestaurant(false)
+          value.length > 0 ? setRestaurant(value[0]) : setRestaurant()
+        }
       }
     const [city, setCity] = useState(),
         onCity = ({target:{value}}) => {
@@ -76,7 +88,6 @@ const form = ({ drinks, restaurants }) => {
 
     // Submit Handler
     const onFormSubmit = e => {
-        e.preventDefault()
         e.target.reset()
         for (var key in formVals) {
             console.log(key)
@@ -88,12 +99,11 @@ const form = ({ drinks, restaurants }) => {
         alert("Form Submitted")
     }
 
-    const sendToDb = async () => {
+    const sendToDb = () => {
       // First Create/Update Restaurants (B/C restaurants have own table)
       const restaurantVals = {restaurant: restaurant, rating: rating}
-      restaurantOpts.indexOf(restaurant) < 0 ? 
-        createNewRestaurant(restaurantVals) :
-          updateRestaurant(restaurantVals)
+      console.log(restaurantVals)
+      newRestaurant ? createNewRestaurant(restaurant, rating) : updateRestaurant(restaurant, rating)
       
       // Then create new drink
       createNewDrink(formVals)
@@ -292,7 +302,7 @@ const form = ({ drinks, restaurants }) => {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps(ctx) {
   const res = await fetch('http://localhost:3001/drinks')
   const drinks = await res.json()
 

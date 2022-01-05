@@ -3,7 +3,7 @@ const apiRoute = '/api/restaurant/new'
 const updateRestaurant = async (restaurant, rating) => {
     console.log(`Client side: restaurant=${restaurant} & rating=${rating}`)
 
-    var newRestaurant = {
+    const newRestaurant = {
       restaurant: restaurant,
       rating: rating
     }

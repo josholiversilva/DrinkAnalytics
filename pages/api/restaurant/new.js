@@ -1,12 +1,10 @@
 export default async function handler(req, res) {
     const restaurant = req.body['restaurant']
     const rating = req.body['rating']
-    var newRestaurant = {}
-    var response = {}
     switch(req.method) {
         case 'POST':
             try {
-                response = await fetch('http://localhost:3001/restaurants', {
+                const response = await fetch('http://localhost:3001/restaurants', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -24,9 +22,9 @@ export default async function handler(req, res) {
             }
             break
         case 'PUT':
-            response = await fetch('http://localhost:3001/restaurants')
-            const reqRestaurant = req.body.restaurant['restaurant']
-            const reqRating = req.body.restaurant['rating']
+            const response = await fetch('http://localhost:3001/restaurants')
+            const reqRestaurant = req.body['restaurant']
+            const reqRating = req.body['rating']
             const restaurants = await response.json()
 
             const currRestaurantRating = restaurants
