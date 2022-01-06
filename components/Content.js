@@ -4,13 +4,15 @@ import Image from 'next/image'
 import inner from '../styles/Inner.module.css'
 import styles from '../styles/Layout.module.css'
 import { useSelector } from 'react-redux';
-import { getSpending } from '../features/content/getContentAPI'
+import { getSpending, getDrinkCount, getRestaurantCount, getTop3Drinks } from '../features/content/getContentAPI'
 
 const Content = (props) => {
     const { time } = useSelector(state => state.timeType)
 
     const spending = `${getSpending(time, props.drinks)} USD Spent`
-    console.log(spending)
+    const drinkCount = `${getDrinkCount(time, props.drinks)} Drinks`
+    const restaurantCount = `${getRestaurantCount(time, props.drinks)} Restaurants`
+    const top3Drinks = `${getTop3Drinks(time, props.drinks)}`
 
     return (
         <>
@@ -22,10 +24,10 @@ const Content = (props) => {
                     <Link href="/spending">{spending}</Link>
                 </button>
                 <button className={styles.card2} href="/drinks">
-                    <Link href="/drinks">50 Drinks</Link>
+                    <Link href="/drinks">{drinkCount}</Link>
                 </button>
                 <button className={styles.card2} href="/restaurants">
-                    <Link href="/restaurants">20 Restaurants</Link>
+                    <Link href="/restaurants">{restaurantCount}</Link>
                 </button>
             </div>
 
