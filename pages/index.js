@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 require('datejs')
 
-export default function Home({ drinks, restaurants }) {
+export default function Home({ drinks, restaurants, trdw, trdm, trdy, trrw, trrm, trry }) {
   const { time } = useSelector(state => state.timeType)
   const dispatch = useDispatch();
 
@@ -39,7 +39,14 @@ export default function Home({ drinks, restaurants }) {
         <button className={contentStyles.current}>{handleCurrent()}</button>
       </div>
       <div className={contentStyles.box}>
-        <Content drinks={drinks} />
+        <Content 
+          drinks={drinks} 
+          trdw={trdw} 
+          trdm={trdm} 
+          trdy={trdy} 
+          trrw={trrw} 
+          trrm={trrm} 
+          trry={trry} />
       </div>
     </>
   )
@@ -52,10 +59,34 @@ export async function getServerSideProps(ctx) {
   const res_2 = await fetch('http://localhost:3001/restaurants')
   const restaurants = await res_2.json()
 
+  const res_3 = await fetch('http://localhost:3001/drinks/top/rated/week')
+  const trdw = await res_3.json()
+
+  const res_4 = await fetch('http://localhost:3001/drinks/top/rated/month')
+  const trdm = await res_4.json()
+
+  const res_5 = await fetch('http://localhost:3001/drinks/top/rated/year')
+  const trdy = await res_5.json()
+
+  const res_6 = await fetch('http://localhost:3001/restaurants/top/rated/week')
+  const trrw = await res_6.json()
+
+  const res_7 = await fetch('http://localhost:3001/restaurants/top/rated/month')
+  const trrm = await res_7.json()
+
+  const res_8 = await fetch('http://localhost:3001/restaurants/top/rated/year')
+  const trry = await res_8.json()
+
   return {
     props: {
       drinks,
-      restaurants
+      restaurants,
+      trdw, 
+      trdm, 
+      trdy,
+      trrw,
+      trrm,
+      trry
     }
   }
 }

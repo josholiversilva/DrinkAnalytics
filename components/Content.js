@@ -4,15 +4,27 @@ import Image from 'next/image'
 import inner from '../styles/Inner.module.css'
 import styles from '../styles/Layout.module.css'
 import { useSelector } from 'react-redux';
-import { getSpending, getDrinkCount, getRestaurantCount, getTop3Drinks } from '../features/content/getContentAPI'
+import { getSpending, getDrinkCount, getRestaurantCount } from '../features/content/getContentAPI'
 
 const Content = (props) => {
     const { time } = useSelector(state => state.timeType)
+    const topDrinkTime = {
+        'w': props.trdw[0],
+        'm': props.trdm[0],
+        'y': props.trdy[0]
+    }
+    const topRestaurantTime = {
+        'w': props.trrw[0],
+        'm': props.trdm[0],
+        'y': props.trdy[0]
+    }
 
     const spending = `${getSpending(time, props.drinks)} USD Spent`
     const drinkCount = `${getDrinkCount(time, props.drinks)} Drinks`
     const restaurantCount = `${getRestaurantCount(time, props.drinks)} Restaurants`
-    const top3Drinks = `${getTop3Drinks(time, props.drinks)}`
+    const topDrink = topDrinkTime[time]
+    const topRestaurant = topRestaurantTime[time]
+    console.log("Top Restaurant:", topRestaurant)
 
     return (
         <>
@@ -44,8 +56,8 @@ const Content = (props) => {
                     </div>
                 </div>
                 <div className={inner.top_left_box_content_desc}>
-                    <h2>Mango Milk Tea</h2>
-                    <p>25% sugar, less ice, sub cane sugar with honey, honey boba</p>
+                    <h2>{topDrink.name}</h2>
+                    <p>{topDrink.desc}</p>
                     <p>100 Drinks | 400$ Spent</p>
                 </div>
             </div>
@@ -63,9 +75,8 @@ const Content = (props) => {
                     </div>
                 </div>
                 <div className={inner.top_left_box_content_desc}>
-                    <h2>Sunright Tea Bar</h2>
-                    <p>City, State</p>
-                    <p>4Stars | $$ | 1000</p>
+                    <h2>{topRestaurant.name}</h2>
+                    <p>{topRestaurant.rating} ⭐ &ensp;| &ensp; 400 💲💲 &ensp; | &ensp;1000 🧋</p>
                 </div>
             </div>
  
