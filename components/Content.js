@@ -29,29 +29,36 @@ const Content = (props) => {
     return (
         <>
             <div className={inner.top_box}>
-                <div className={styles.card2}> 
-                    <Link href="/health">150 Calories</Link>
-                </div>
-                <button className={styles.card2} href="/spending">
-                    <Link href="/spending">{spending}</Link>
-                </button>
-                <button className={styles.card2} href="/drinks">
-                    <Link href="/drinks">{drinkCount}</Link>
-                </button>
-                <button className={styles.card2} href="/restaurants">
-                    <Link href="/restaurants">{restaurantCount}</Link>
-                </button>
+                <Link href="/health">
+                    <button className={styles.card2}> 
+                        <a href="/health">150 Calories</a>
+                    </button>
+                </Link>
+                <Link href="/spending">
+                    <button className={styles.card2}>
+                        <span>{spending}</span>
+                    </button>
+                </Link>
+                <Link href="/drinks">
+                    <button className={styles.card2}>
+                        <span>{drinkCount}</span>
+                    </button>
+                </Link>
+                <Link href="/restaurants">
+                    <button className={styles.card2}>
+                        <span>{restaurantCount}</span>
+                    </button>
+                </Link>
             </div>
 
             <div className={inner.top_left_box}>
-                <p>Favorite Drink</p>
+                
                 <div className={inner.top_left_box_content_pic}>
+                    <p>Favorite Drink</p>
                     <div className={inner.pic}>
-                        <Image className={inner.round}
+                        <img className={inner.round}
                             alt="Drink Image"
                             src={"/test.jpeg"}
-                            width={150}
-                            height={150}
                         />
                     </div>
                 </div>
@@ -63,14 +70,12 @@ const Content = (props) => {
             </div>
 
             <div className={inner.mid_left_box}>
-                <p>Favorite Restaurant</p>
                 <div className={inner.bottom_left_box_content_pic}>
+                    <p>Favorite Restaurant</p>
                     <div className={inner.pic}>
-                        <Image className={inner.round}
+                        <img className={inner.round}
                             alt="Drink Image"
                             src={"/sunright.jpeg"}
-                            width={150}
-                            height={150}
                         />
                     </div>
                 </div>
@@ -93,24 +98,6 @@ const Content = (props) => {
                     1. Sunright Tea Studio<br />
                     2. 7 Leaves<br />
                     3. AU<br />
-                </div>
-
-                <div className={styles.card} style={{position: 'relative', height: '50%', float: 'left', clear: 'both', display:'inline-block'}}>
-                    <h1>History</h1>
-                    Got some drink for this much money at this location<br />
-                    Got some drink for this much money at this location<br />
-                    Got some drink for this much money at this location<br />
-                    Got some drink for this much money at this location<br />
-                    Got some drink for this much money at this location<br />
-                    Got some drink for this much money at this location<br />
-                    Got some drink for this much money at this location<br />
-                    Got some drink for this much money at this location<br />
-                    Got some drink for this much money at this location<br />
-                    Got some drink for this much money at this location<br />
-                    Got some drink for this much money at this location<br />
-                    Got some drink for this much money at this location<br />
-                    Got some drink for this much money at this location<br />
-                    Got some drink for this much money at this location<br />
                 </div>
             </div>
         </>

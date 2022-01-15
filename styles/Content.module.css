@@ -25,6 +25,7 @@
     background: none;
     border: none;
     cursor: pointer;
+    text-shadow: 2px 2px 8px gray;
 }
 
 .selection:hover {
@@ -40,6 +41,7 @@
     background: none;
     border: none;
     cursor: pointer;
+    text-shadow: 2px 2px 8px gray;
 }
 
 .current:hover {

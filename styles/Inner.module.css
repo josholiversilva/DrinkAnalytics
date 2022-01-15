@@ -23,6 +23,9 @@
     top: 37.5%;
     right: 50%;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .mid_left_box {
@@ -38,6 +41,9 @@
     top: 70%;
     right: 50%;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .top_right_box{
@@ -62,8 +68,12 @@
     width: 50%;
     color: black;
     float:left;
-    min-height: 5%;
-    height: 10.75vh;
+    min-height: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .bottom_left_box_content_pic {
@@ -71,8 +81,12 @@
     width: 50%;
     color: black;
     float:left;
-    min-height: 5%;
-    height: 15vh;
+    min-height: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .top_left_box_content_desc {
@@ -88,10 +102,23 @@
 
 .round {
     border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: relative;
+    height: 85%;
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .pic {
     position: relative;
-    height: 50%;
+    height: 100%;
     width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
