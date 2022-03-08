@@ -127,7 +127,7 @@ const form = ({ drinks, restaurants }) => {
     return (
         <>
           <div style={{paddingLeft: "2em", paddingRight: "2em"}}>
-            <div><h1>Boba Entry<br /><br /></h1></div>
+            <div className="text-white text-4xl pt-4"><h1>Boba Entry</h1></div>
               <Form onSubmit={onFormSubmit}>
                 <Row className="mb-3">
                   <Form.Group as={Col}>

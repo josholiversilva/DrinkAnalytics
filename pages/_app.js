@@ -11,10 +11,12 @@ import '../styles/globals.css'
 function MyApp({ Component, pageProps }) {
   return (
       <Provider store={store}>
+        <div className="bg-white">
         <Header />
         <Layout>
           <Component {...pageProps} />
         </Layout>
+        </div>
       </Provider>
   )
 }

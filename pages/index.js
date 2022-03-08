@@ -28,29 +28,33 @@ export default function Home({ drinks, restaurants, trdw, trdm, trdy, trrw, trrm
 
   return (
     <>
-      <Head>
-        <title>Home</title>
-      </Head>
-
-      <div className={contentStyles.selections}>
-        <button className={contentStyles.selection} onClick={() => dispatch(switchTimeType('y'))} href="/">Year</button>
-        <button className={contentStyles.selection} onClick={() => dispatch(switchTimeType('m'))} href="/">Month</button>
-        <button className={contentStyles.selection} onClick={() => dispatch(switchTimeType('w'))} href="/">Week</button>
-        <button className={contentStyles.current}>{handleCurrent()}</button>
+      <div className="flex h-8 w-full justify-center items-center">
+        <div className="flex space-x-2 h-8 w-1/6 items-center justify-center text-white">
+          <button onClick={() => dispatch(switchTimeType('y'))} href="/">Year</button>
+          <button onClick={() => dispatch(switchTimeType('m'))} href="/">Month</button>
+          <button onClick={() => dispatch(switchTimeType('w'))} href="/">Week</button>
+        </div>
       </div>
-      <div className={contentStyles.box}>
-        <Content 
-          drinks={drinks} 
-          trdw={trdw} 
-          trdm={trdm} 
-          trdy={trdy} 
-          trrw={trrw} 
-          trrm={trrm} 
-          trry={trry} />
-      </div>
+      <Content 
+        drinks={drinks} 
+        trdw={trdw} 
+        trdm={trdm} 
+        trdy={trdy} 
+        trrw={trrw} 
+        trrm={trrm} 
+        trry={trry} />
     </>
   )
 }
+
+// <Content 
+// drinks={drinks} 
+// trdw={trdw} 
+// trdm={trdm} 
+// trdy={trdy} 
+// trrw={trrw} 
+// trrm={trrm} 
+// trry={trry} />
 
 export async function getServerSideProps(ctx) {
   const res = await fetch('http://localhost:3001/drinks')

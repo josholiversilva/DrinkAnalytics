@@ -26,32 +26,67 @@ const Content = (props) => {
     const topRestaurant = topRestaurantTime[time]
     console.log("Top Restaurant:", topRestaurant)
 
+    const updates = ['7.20$ spent at Sunright Tea Studio', 
+        '4.50$ spent at 7 Leaves', '7.20$ spent at Sunright Tea Studio', '7.20$ spent at Sunright Tea Studio',
+        '7.20$ spent at Sunright Tea Studio', '7.20$ spent at Sunright Tea Studio', '7.20$ spent at Sunright Tea Studio',
+        '7.20$ spent at Sunright Tea Studio', '7.20$ spent at Sunright Tea Studio', '7.20$ spent at Sunright Tea Studio'
+    ]
+
     return (
-        <>
-            <div className={inner.top_box}>
-                <Link href="/health">
-                    <button className={styles.card2}> 
-                        <a href="/health">150 Calories</a>
+        <> 
+            <div className="flex-col space-y-4 justify-center items-center pt-12 h-full">
+                <div className="text-white text-2xl w-full text-center">2022</div>
+                <div className="flex space-x-2 w-full items-center justify-center">
+                    <button className="bg-white w-1/4 h-12">
+                        <div>
+                            <span>150 Calories</span>
+                        </div>
                     </button>
-                </Link>
-                <Link href="/spending">
-                    <button className={styles.card2}>
-                        <span>{spending}</span>
+                    <button className="bg-white w-1/4 h-12">
+                        <div>
+                            <span>{spending}</span>
+                        </div>
                     </button>
-                </Link>
-                <Link href="/drinks">
-                    <button className={styles.card2}>
-                        <span>{drinkCount}</span>
+                </div>
+                <div className="flex space-x-2 w-full items-center justify-center">
+                    <button className="bg-white w-1/4 h-12">
+                        <div>
+                            <span>{drinkCount}</span>
+                        </div>
                     </button>
-                </Link>
-                <Link href="/restaurants">
-                    <button className={styles.card2}>
-                        <span>{restaurantCount}</span>
+                    <button className="bg-white w-1/4 h-12">
+                        <div>
+                            <span>{restaurantCount}</span>
+                        </div>
                     </button>
-                </Link>
+                </div>
             </div>
 
-            <div className={inner.top_left_box}>
+
+            <div className="flex-col space-y-4 justify-center items-center mt-24 bg-[#19222e]">
+                <div className="flex w-full justify-center items-center">
+                    <div className="text-white w-1/2 border-b-2 border-white text-lg">
+                        Latest Updates
+                    </div>
+                </div>
+                {
+                    updates.map(update => {
+                        return (
+                            <div className="flex w-full justify-center items-center">
+                                <div className="text-white w-1/2 text-lg bg-gray-400">
+                                    {update}
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        </>
+    )
+}
+
+/*
+<div className={inner.top_left_box}>
                 
                 <div className={inner.top_left_box_content_pic}>
                     <p>Favorite Drink</p>
@@ -100,8 +135,6 @@ const Content = (props) => {
                     3. AU<br />
                 </div>
             </div>
-        </>
-    )
-}
+            */
 
 export default Content
