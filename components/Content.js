@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import inner from '../styles/Inner.module.css'
 import styles from '../styles/Layout.module.css'
+import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux';
 import { getSpending, getDrinkCount, getRestaurantCount } from '../features/content/getContentAPI'
 
@@ -17,6 +18,11 @@ const Content = (props) => {
         'w': props.trrw[0],
         'm': props.trdm[0],
         'y': props.trdy[0]
+    }
+
+    const router = useRouter()
+    const handleAnalyticChange = (analyticChange) => {
+        router.push(`/${analyticChange}`)
     }
 
     const spending = `${getSpending(time, props.drinks)} USD Spent`
@@ -37,31 +43,30 @@ const Content = (props) => {
             <div className="flex-col space-y-4 justify-center items-center pt-12 h-full">
                 <div className="text-white text-2xl w-full text-center">2022</div>
                 <div className="flex space-x-2 w-full items-center justify-center">
-                    <button className="bg-white w-1/4 h-12">
+                    <button onClick={() => handleAnalyticChange('health')} className="bg-white w-1/4 h-12 rounded-md">
                         <div>
                             <span>150 Calories</span>
                         </div>
                     </button>
-                    <button className="bg-white w-1/4 h-12">
+                    <button onClick={() => handleAnalyticChange('spending')} className="bg-white w-1/4 h-12 rounded-md">
                         <div>
                             <span>{spending}</span>
                         </div>
                     </button>
                 </div>
-                <div className="flex space-x-2 w-full items-center justify-center">
-                    <button className="bg-white w-1/4 h-12">
+                <div onClick={() => handleAnalyticChange('drinks')} className="flex space-x-2 w-full items-center justify-center">
+                    <button className="bg-white w-1/4 h-12 rounded-md">
                         <div>
                             <span>{drinkCount}</span>
                         </div>
                     </button>
-                    <button className="bg-white w-1/4 h-12">
+                    <button onClick={() => handleAnalyticChange('restaurants')} className="bg-white w-1/4 h-12 rounded-md">
                         <div>
                             <span>{restaurantCount}</span>
                         </div>
                     </button>
                 </div>
             </div>
-
 
             <div className="flex-col space-y-4 justify-center items-center mt-24 bg-[#19222e]">
                 <div className="flex w-full justify-center items-center">

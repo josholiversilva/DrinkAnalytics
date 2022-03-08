@@ -32,11 +32,14 @@ const drinks = () => {
         ],
       };
     return (
-        <div style={{height:"100%", width:"100%", display:"flex", alignContent:"center", justifyContent: "center"}}>
-            <div style={{width:"50%"}}>
-            <Pie data={data} />
+        <div className="h-full w-full flex">
+            <div className="h-1/2 w-1/4">
+                <Pie data={data} />
             </div>
             <div>
+            <div className="flex w-full">
+                <div className="text-white">Drink</div>
+            </div>
             <table>
                 <tr>
                     <th>Drink</th>
@@ -45,6 +48,7 @@ const drinks = () => {
                     <th>Bought</th>
                 </tr>
                 <tr>
+                    <td className="text-white">Strawberry Milk Tea</td>
                     <td style={{paddingRight:"2rem"}}>Strawberry Milk Tea</td>
                     <td style={{paddingRight:"3.5rem"}}>7 Leaves</td>
                     <td style={{paddingRight:"3.5rem"}}>$4.20</td>
