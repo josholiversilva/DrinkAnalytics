@@ -6,10 +6,18 @@ import DatePicker from "react-datepicker";
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { createNewRestaurant, updateRestaurant } from '../features/restaurant/restaurantAPI'
 import { createNewDrink } from '../features/drinks/drinksAPI'
+import useSWR from 'swr'
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const form = ({ drinks, restaurants }) => {
+const fetcher = (...args) => fetch(...args).then(res => res.json())
+
+const form = () => {
+  const { data, error } = useSWR('/api/user/123', fetcher)
+
+  if (error) return <div className="text-lg text-white">could not load db...</div>
+  if (!data) return <div className="text-lg text-white">loading...</div>
+
     const [usState, setUSState] = useState('CA');
     const [startDate, setStartDate] = useState(new Date());
 
@@ -302,6 +310,7 @@ const form = ({ drinks, restaurants }) => {
     )
 }
 
+/*
 export async function getServerSideProps(ctx) {
   const res = await fetch('http://localhost:3001/drinks')
   const drinks = await res.json()
@@ -316,5 +325,6 @@ export async function getServerSideProps(ctx) {
     }
   }
 }
+*/
 
 export default form 

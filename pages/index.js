@@ -1,15 +1,10 @@
 import React from 'react'
 import Content from '../components/index/Content'
-import ChangeDate from '../components/index/ChangeDate'
-
-import { switchTimeType } from '../features/timeType/timeTypeSlice'
-import { useDispatch } from 'react-redux';
+import ChangeDate from '../components/ChangeDate'
 
 require('datejs')
 
 export default function Home({ drinks, restaurants, trdw, trdm, trdy, trrw, trrm, trry }) {
-  const dispatch = useDispatch();
-
   return (
     <>
       <ChangeDate />

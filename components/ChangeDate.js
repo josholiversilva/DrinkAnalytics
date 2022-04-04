@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import left_arrow from '../../public/left_arrow.png'
-import right_arrow from '../../public/right_arrow.png'
+import left_arrow from '../public/left_arrow.png'
+import right_arrow from '../public/right_arrow.png'
 import { useDispatch, useSelector } from 'react-redux';
-import { changeOffset } from '../../features/timeType/timeTypeSlice';
-import { switchTimeType } from '../../features/timeType/timeTypeSlice'
+import { changeOffset } from '../features/timeType/timeTypeSlice';
+import { switchTimeType } from '../features/timeType/timeTypeSlice'
 
 require('datejs')
 

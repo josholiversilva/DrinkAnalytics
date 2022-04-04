@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import VisualBar from '../components/analytics/VisualBar'
 import Visuals from '../components/analytics/Visuals'
-import ChangeDate from '../components/index/ChangeDate'
+import ChangeDate from '../components/ChangeDate'
 
 const drinks = () => {
   const [vis, setVis] = useState('Drinks')
