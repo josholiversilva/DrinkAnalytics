@@ -1,24 +1,22 @@
 export default async function handler(req, res) {
-    const restaurant = req.body['restaurant']
-    const rating = req.body['rating']
+    console.log('INSIDE NEW API')
     switch(req.method) {
         case 'POST':
+            console.log('going to send body:', req.body)
             try {
-                const response = await fetch('http://localhost:3001/restaurants', {
+                await fetch('http://localhost:3001/restaurants', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(req.body.restaurant)
+                    body: JSON.stringify(req.body)
                 })
-                const data = await response.json()
+                .then(res => res.status(200).json())
+                console.log('POSTED NEW RESTAURANT')
             }
             catch(e) {
                 res.status(400).json({message: e || "Caught Error"})
-            }
-            finally {
-                res.status(200).json(data)
             }
             break
         case 'PUT':

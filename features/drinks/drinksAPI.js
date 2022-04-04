@@ -1,7 +1,8 @@
 const apiRoute = '/api/drinks/new'
 
 const createNewDrink = async (drink) => {
-    console.log(drink)
+    console.log('INSIDE CREATE NEW DRINK')
+    console.log('going to send body:', drink)
     const response = await fetch(apiRoute, {
         method: 'POST',
         headers: {

@@ -10,7 +10,7 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-      <div className="bg-[#19222e]">
+      <div className="h-screen w-screen bg-[#19222e]">
         <Provider store={store}>
           <Header />
           <Layout>

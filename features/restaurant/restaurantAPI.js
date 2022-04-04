@@ -1,4 +1,4 @@
-const apiRoute = '/api/restaurant/new'
+const apiRoute = 'api/restaurant/new'
 
 const updateRestaurant = async (restaurant, rating) => {
     console.log(`Client side: restaurant=${restaurant} & rating=${rating}`)
@@ -23,7 +23,7 @@ const updateRestaurant = async (restaurant, rating) => {
 
 const createNewRestaurant = async (restaurant, rating) => {
   const newRestaurant = {
-    restaurant: restaurant,
+    name: restaurant,
     rating: rating
   }
   console.log("INSIDE NEW RESTAURANT")

@@ -102,8 +102,9 @@ const form = ({ drinks, restaurants }) => {
 
     const sendToDb = () => {
       // First Create/Update Restaurants (B/C restaurants have own table)
-      const restaurantVals = {restaurant: restaurant, rating: rating}
-      console.log(restaurantVals)
+      const restaurantVals = {name: restaurant, rating: rating}
+      console.log('restaurantVals:', restaurantVals)
+      console.log('new restaurant:', newRestaurant)
       newRestaurant ? createNewRestaurant(restaurant, rating) : updateRestaurant(restaurant, rating)
       
       // Then create new drink
