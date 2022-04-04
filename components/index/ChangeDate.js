@@ -4,6 +4,7 @@ import left_arrow from '../../public/left_arrow.png'
 import right_arrow from '../../public/right_arrow.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { changeOffset } from '../../features/timeType/timeTypeSlice';
+import { switchTimeType } from '../../features/timeType/timeTypeSlice'
 
 require('datejs')
 
@@ -63,7 +64,7 @@ const ChangeDate = () => {
 
     return (
         <>
-            <div className="text-white text-4xl w-full text-center font-bold outline-4 outline-gray-300 flex space-x-3 items-center justify-center" onMouseEnter={() => setShowArrows(true)} onMouseLeave={() => setShowArrows(false)}>
+            <div className="text-[#95c4de] text-4xl w-full text-center font-bold outline-4 outline-gray-300 flex space-x-3 items-center justify-center" onMouseEnter={() => setShowArrows(true)} onMouseLeave={() => setShowArrows(false)}>
                 { showArrows &&
                     <button onClick={() => handleChangeOffset(-1)}>
                         <div>
@@ -91,6 +92,25 @@ const ChangeDate = () => {
                         </div>
                     </button>
                 }
+            </div>
+            <div className="flex h-8 w-full justify-center items-center mt-3">
+                <div className="flex space-x-2 h-8 w-1/6 items-center justify-center text-[#95c4de]">
+                { time === 'y' ?
+                    <button className="border-2 border-white rounded-lg p-1" onClick={() => dispatch(switchTimeType('y'))} href="/">Year</button>
+                :
+                    <button onClick={() => dispatch(switchTimeType('y'))} href="/">Year</button>
+                }
+                { time === 'm' ?
+                    <button className="border-2 border-white rounded-lg p-1" onClick={() => dispatch(switchTimeType('m'))} href="/">Month</button>
+                :
+                    <button onClick={() => dispatch(switchTimeType('m'))} href="/">Month</button>
+                }
+                { time === 'w' ?
+                    <button className="border-2 border-white rounded-lg p-1" onClick={() => dispatch(switchTimeType('w'))} href="/">Week</button>
+                :
+                    <button onClick={() => dispatch(switchTimeType('w'))} href="/">Week</button>
+                }
+                </div>
             </div>
         </>
     )

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import VisualBar from '../components/analytics/VisualBar'
 import Visuals from '../components/analytics/Visuals'
+import ChangeDate from '../components/index/ChangeDate'
 
 const drinks = () => {
   const [vis, setVis] = useState('Drinks')
@@ -30,22 +31,10 @@ const drinks = () => {
             <VisualBar currVis={vis} vis={'Health'} visMap={visMap} onHandleChangeVis={handleChangeVis} />
           </div>
           <div className="w-1/2 mt-4 flex flex-col">
-            <div className="text-4xl text-white text-center">
-              2020
-            </div>
-            <div className="flex space-x-4 items-center justify-center mt-4">
-            <div className="text-white">
-              Year
-            </div>
-            <div className="text-white">
-              Month
-            </div>
-            <div className="text-white">
-              Week
-            </div>
-            </div>
+            <ChangeDate />
           </div>
         </div>
+
         <div className="h-full w-screen flex mt-12">
             <div className="flex flex-col w-screen h-full">
                 <div className="flex">
