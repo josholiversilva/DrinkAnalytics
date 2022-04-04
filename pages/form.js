@@ -126,7 +126,7 @@ const form = ({ drinks, restaurants }) => {
 
     return (
         <>
-          <div style={{paddingLeft: "2em", paddingRight: "2em"}}>
+          <div className="pl-2 pr-2">
             <div className="text-white text-4xl pt-4"><h1>Boba Entry</h1></div>
               <Form onSubmit={onFormSubmit}>
                 <Row className="mb-3">
@@ -287,7 +287,7 @@ const form = ({ drinks, restaurants }) => {
                     </Form.Group>
                 </Row>
 
-                <div style={{paddingTop:"10vh"}} className="d-grid gap-2">
+                <div className="d-grid gap-2 pt-12">
                   <Button variant="primary" type="submit">
                     Submit
                   </Button>

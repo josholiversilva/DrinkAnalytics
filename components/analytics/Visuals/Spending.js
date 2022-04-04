@@ -21,8 +21,7 @@ ChartJS.register(
     Legend
 );
 
-
-const spending = () => {
+const Spending = () => {
     const options = {
         responsive: true,
         interaction: {
@@ -82,4 +81,4 @@ const spending = () => {
     )
 }
 
-export default spending;
+export default Spending;
