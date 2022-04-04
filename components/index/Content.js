@@ -41,7 +41,7 @@ const Content = (props) => {
 
     return (
         <> 
-            <div className="flex-col space-y-4 justify-center items-center pt-4 pb-12 h-full shadow-sm shadow-white">
+            <div className="flex-col space-y-4 justify-center items-center pt-4 pb-12 shadow-sm shadow-white">
                 
                 <div className="flex space-x-2 w-full items-center justify-center">
                     <button onClick={() => handleAnalyticChange('analytics')} className="shadow-lg bg-[#95c4de] w-1/4 h-24 rounded-md">

@@ -6,18 +6,10 @@ import DatePicker from "react-datepicker";
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { createNewRestaurant, updateRestaurant } from '../features/restaurant/restaurantAPI'
 import { createNewDrink } from '../features/drinks/drinksAPI'
-import useSWR from 'swr'
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const fetcher = (...args) => fetch(...args).then(res => res.json())
-
-const form = () => {
-  const { data, error } = useSWR('/api/user/123', fetcher)
-
-  if (error) return <div className="text-lg text-white">could not load db...</div>
-  if (!data) return <div className="text-lg text-white">loading...</div>
-
+const form = ({ drinks, restaurants }) => {
     const [usState, setUSState] = useState('CA');
     const [startDate, setStartDate] = useState(new Date());
 
@@ -70,7 +62,7 @@ const form = () => {
             setRating(newRating)
         }
 
-    useEffect(() => {
+    //useEffect(() => {
       var drinkNames = drinks.map(drink => {
         return drink.name
       })
@@ -78,9 +70,10 @@ const form = () => {
         return restaurant.name
       })
       console.log(drinkNames, restaurantNames)
-      setDrinkOpts(drinkNames)
-      setRestaurantOpts(restaurantNames)
-    }, [])
+     useEffect(() => {
+       setDrinkOpts(drinkNames)
+       setRestaurantOpts(restaurantNames)
+     }, [])
 
     // Form Object
     const formVals = {
@@ -134,9 +127,10 @@ const form = () => {
 
     return (
         <>
-          <div className="pl-2 pr-2">
-            <div className="text-white text-4xl pt-4"><h1>Boba Entry</h1></div>
+          <div className="flex justify-center items-center h-full">
+          <div className="h-full flex justify-center items-center">
               <Form onSubmit={onFormSubmit}>
+                <h1 className="text-white text-4xl pt-4">Boba Entry</h1>
                 <Row className="mb-3">
                   <Form.Group as={Col}>
                     <Form.Label>Drink</Form.Label>
@@ -301,22 +295,31 @@ const form = () => {
                   </Button>
                 </div>
               </Form>
-
-              <div className="d-grid gap-2">
-                <Button href='/' size='lrg' variant='secondary'>Return</Button>
-              </div>
             </div>
+          </div>
         </>
     )
 }
 
-/*
 export async function getServerSideProps(ctx) {
-  const res = await fetch('http://localhost:3001/drinks')
-  const drinks = await res.json()
+  var drinks = []
+  var restaurants = []
 
-  const res_2 = await fetch('http://localhost:3001/restaurants')
-  const restaurants = await res_2.json()
+  try {
+    const res = await fetch('http://localhost:3001/drinks')
+    drinks = await res.json()
+  }
+  catch (err) {
+    console.log(err)
+  }
+
+  try {
+    const res_2 = await fetch('http://localhost:3001/restaurants')
+    restaurants = await res_2.json()
+  }
+  catch (err) {
+    console.log(err)
+  }
 
   return {
     props: {
@@ -325,6 +328,5 @@ export async function getServerSideProps(ctx) {
     }
   }
 }
-*/
 
 export default form 

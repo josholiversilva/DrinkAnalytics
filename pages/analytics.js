@@ -35,7 +35,7 @@ const drinks = () => {
           </div>
         </div>
 
-        <div className="h-full w-screen flex mt-12">
+        <div className="w-screen flex mt-12">
             <div className="flex flex-col w-screen h-full">
                 <div className="flex">
                     <div className="text-white w-1/4 font-bold text-lg">Drink</div>
