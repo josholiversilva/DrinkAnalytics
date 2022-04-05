@@ -8,6 +8,11 @@ export const timeTypeSlice = createSlice({
             'w': 0,
             'm': 0,
             'y': 0
+        },
+        timeDate: {
+            'w': '',
+            'm': '',
+            'y': ''
         }
     },
     reducers: {
@@ -16,11 +21,14 @@ export const timeTypeSlice = createSlice({
         },
         changeOffset: (state, action) => {
             state.offset[state.time] += action.payload
+        },
+        changeTimeDate: (state, action) => {
+            state.timeDate[state.time] = action.payload
         }
     }
 })
 
 // Actions
-export const { switchTimeType, changeOffset } = timeTypeSlice.actions;
+export const { switchTimeType, changeOffset, changeTimeDate } = timeTypeSlice.actions;
 
 export default timeTypeSlice.reducer;

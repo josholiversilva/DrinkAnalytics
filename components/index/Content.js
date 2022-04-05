@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux';
 import { getSpending, getDrinkCount, getRestaurantCount } from '../../features/content/getContentAPI'
+import useSWR from 'swr'
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 const Content = (props) => {
-    const { time } = useSelector(state => state.timeType)
+    const { time, timeDate } = useSelector(state => state.timeType)
+    console.log('Content:', timeDate[time])
     const topDrinkTime = {
         'w': props.trdw ? props.trdw[0] : 0,
         'm': props.trdm ? props.trdm[0] : 0,
@@ -21,17 +25,12 @@ const Content = (props) => {
         router.push(`/${analyticChange}`)
     }
 
-    /*
-    const spending = `${getSpending(time, props.drinks)} USD Spent`
-    const drinkCount = `${getDrinkCount(time, props.drinks)} Drinks`
-    const restaurantCount = `${getRestaurantCount(time, props.drinks)} Restaurants`
-    const topDrink = topDrinkTime[time]
-    const topRestaurant = topRestaurantTime[time]
-    console.log("Top Restaurant:", topRestaurant)
-    */
-   const spending = 0;
-   const drinkCount = 0;
-   const restaurantCount = 0;
+    // const spending = `${getSpending(time, props.drinks)} USD Spent`
+    // const drinkCount = `${getDrinkCount(time, props.drinks)} Drinks`
+    // const restaurantCount = `${getRestaurantCount(time, props.drinks)} Restaurants`
+    // const topDrink = topDrinkTime[time]
+    // const topRestaurant = topRestaurantTime[time]
+    // console.log("Top Restaurant:", topRestaurant)
 
     const updates = ['7.20$ spent at Sunright Tea Studio', 
         '4.50$ spent at 7 Leaves', '7.20$ spent at Sunright Tea Studio', '7.20$ spent at Sunright Tea Studio',
@@ -39,10 +38,27 @@ const Content = (props) => {
         '7.20$ spent at Sunright Tea Studio', '7.20$ spent at Sunright Tea Studio', '7.20$ spent at Sunright Tea Studio'
     ]
 
+    const { data, error } = useSWR(`http://localhost:3001/drinks/${time}/${timeDate[time]}`, fetcher)
+    var spending = 0
+    var drinkSet = new Set()
+    var restaurantSet = new Set()
+
+    if (data) {
+        data.filter(d => {
+            spending += d.cost
+            drinkSet.add(d.name)
+            restaurantSet.add(d.restaurantid)
+        })
+    }
+    const drinkCount = drinkSet.size
+    const restaurantCount = restaurantSet.size
+
+    if (error) return <div>Failed to load</div>
+    if (!data) return <div>Loading...</div>
+
     return (
         <> 
             <div className="flex-col space-y-4 justify-center items-center pt-4 pb-12 shadow-sm shadow-white">
-                
                 <div className="flex space-x-2 w-full items-center justify-center">
                     <button onClick={() => handleAnalyticChange('analytics')} className="shadow-lg bg-[#95c4de] w-1/4 h-24 rounded-md">
                         <div>

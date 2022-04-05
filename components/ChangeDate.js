@@ -3,12 +3,13 @@ import Image from 'next/image'
 import left_arrow from '../public/left_arrow.png'
 import right_arrow from '../public/right_arrow.png'
 import { useDispatch, useSelector } from 'react-redux';
-import { changeOffset } from '../features/timeType/timeTypeSlice';
+import { changeOffset, changeTimeDate } from '../features/timeType/timeTypeSlice';
 import { switchTimeType } from '../features/timeType/timeTypeSlice'
 
 require('datejs')
 
 const ChangeDate = () => {
+    const dispatch = useDispatch();
     const { time, offset } = useSelector(state => state.timeType)
 
     // Display the current time type selected from user
@@ -16,10 +17,14 @@ const ChangeDate = () => {
     "July", "August", "September", "October", "November", "December"]
     function handleCurrent() {
         if (time == 'y') {
-            return Date.today().getFullYear()+offset[time];
+            const d = Date.today().getFullYear()+offset[time];
+            dispatch(changeTimeDate(d))
+            return d
         }
         else if (time == 'm') {
-            return `${monthNames[Date.today().getMonth()+offset[time]]} ${Date.today().getFullYear()+offset['y']}`;
+            const d = `${monthNames[Date.today().getMonth()+offset[time]]} ${Date.today().getFullYear()+offset['y']}`;
+            dispatch(changeTimeDate(d))
+            return d
         }
         else {
             var currDate = Date.today()
@@ -35,11 +40,34 @@ const ChangeDate = () => {
                     currDate = new Date(currDate + 7 * 24 * 60 * 60 * 1000)
             }
             const newDate = Date.parse(currDate)
-            return `${newDate.last().monday().getMonth()+1}/${newDate.getDate()} - ${newDate.next().monday().getMonth()+1}/${newDate.getDate()}`
+            var lastMonth = newDate.last().monday().getMonth()+1
+            var nxtMonth = newDate.next().monday().getMonth()+1
+
+            if (lastMonth.toString().length <= 1)
+                lastMonth = `0${lastMonth}`
+            if (nxtMonth.toString().length <= 1)
+                nxtMonth = `0${nxtMonth}`
+
+            console.log('lm:', lastMonth)
+            console.log('nm:', nxtMonth)
+
+            var lastDate = newDate.last().monday().getDate()
+            var nxtDate = newDate.next().monday().getDate()+1
+
+            if (lastDate.toString().length <= 1)
+                lastDate = `0${lastDate}`
+            if (nxtDate.toString().length <= 1)
+                nxtDate = `0${nxtDate}`
+
+            console.log('ld', lastDate)
+            console.log('nd', nxtDate)
+
+            const d = `${newDate.last().monday().getFullYear()}-${lastMonth}-${lastDate}and${newDate.next().monday().getFullYear()}-${nxtMonth}-${nxtDate}`
+            dispatch(changeTimeDate(d))
+            return `${newDate.last().monday().getMonth()+1}/${lastDate} - ${newDate.next().monday().getMonth()+1}/${nxtDate}`
         }
     }
 
-    const dispatch = useDispatch();
     const handleChangeOffset = (amnt) => {
         if (time === 'w') {
             if (offset['w'] !== 0 || amnt < 0)
