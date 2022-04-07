@@ -4,13 +4,25 @@ import { Pie } from 'react-chartjs-2'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-const Item = () => {
-    const data = {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+const Item = ({ data, itemType }) => {
+  var itemLabels = {}
+  console.log(itemType)
+  data.map(item => {
+    if (itemType === 'Drinks')
+      itemLabels[item.name] === undefined ? itemLabels[item.name] = 1 : itemLabels[item.name] += 1
+    else if (itemType === 'Restaurants')
+      itemLabels[item.restaurantid] === undefined ? itemLabels[item.restaurantid] = 1 : itemLabels[item.restaurantid] += 1
+    else
+      itemLabels[item.name] === undefined ? itemLabels[item.name] = 1 : itemLabels[item.name] += 1
+  })
+
+  console.log('itemlabels:', itemLabels)
+    const itemData = {
+        labels: Object.keys(itemLabels),
         datasets: [
           {
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: '# of Drinks',
+            data: Object.values(itemLabels),
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -34,7 +46,7 @@ const Item = () => {
     
     return (
         <Pie 
-            data={data}
+            data={itemData}
         />
     )
 }

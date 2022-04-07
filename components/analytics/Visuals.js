@@ -2,14 +2,18 @@ import React, { useState } from 'react'
 import Item from './Visuals/Item'
 import Spending from './Visuals/Spending'
 
-const Visuals = ({ visType }) => {
-    const showVisual = {
-        'Items': <Item />,
-        'Spending': <Spending />
+const Visuals = ({ visType, vis, data }) => {
+    
+    if (visType === 'Items') {
+        return (
+            <Item data={data} itemType={vis} />
+        )
     }
-    return (
-        showVisual[visType]
-    )
+    else {
+        return (
+            <Spending data={data} time={time} />
+        )
+    }
 }
 
 export default Visuals;
