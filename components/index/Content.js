@@ -44,6 +44,7 @@ const Content = (props) => {
     var restaurantSet = new Set()
 
     if (data) {
+        console.log(data)
         data.filter(d => {
             spending += d.cost
             drinkSet.add(d.name)

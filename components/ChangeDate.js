@@ -23,7 +23,9 @@ const ChangeDate = () => {
         }
         else if (time == 'm') {
             const d = `${monthNames[Date.today().getMonth()+offset[time]]} ${Date.today().getFullYear()+offset['y']}`;
-            dispatch(changeTimeDate(d))
+            const monthIdx = monthNames.indexOf(monthNames[Date.today().getMonth()+offset[time]])+1
+            console.log('month idx:', monthIdx)
+            dispatch(changeTimeDate(monthIdx))
             return d
         }
         else {
@@ -64,7 +66,7 @@ const ChangeDate = () => {
 
             const d = `${newDate.last().monday().getFullYear()}-${lastMonth}-${lastDate}and${newDate.next().monday().getFullYear()}-${nxtMonth}-${nxtDate}`
             dispatch(changeTimeDate(d))
-            return `${newDate.last().monday().getMonth()+1}/${lastDate} - ${newDate.next().monday().getMonth()+1}/${nxtDate}`
+            return `${newDate.last().monday().getMonth()+1}/${lastDate}/${newDate.last().monday().getFullYear().toString().slice(2,4)} - ${newDate.next().monday().getMonth()+1}/${nxtDate}/${newDate.next().monday().getFullYear().toString().slice(2,4)}`
         }
     }
 
@@ -92,34 +94,38 @@ const ChangeDate = () => {
 
     return (
         <>
-            <div className="text-[#95c4de] text-4xl w-full text-center font-bold outline-4 outline-gray-300 flex space-x-3 items-center justify-center" onMouseEnter={() => setShowArrows(true)} onMouseLeave={() => setShowArrows(false)}>
-                { showArrows &&
-                    <button onClick={() => handleChangeOffset(-1)}>
-                        <div>
-                            <Image
-                                src={left_arrow}
-                                width={25}
-                                height={25}
-                            />
-                        </div>
-                    </button>
-                }
-                <button onClick={() => setShowArrows(true)}>
-                    <div>
-                        {handleCurrent()}
+            <div className="text-[#95c4de] text-4xl w-full text-center font-bold outline-4 outline-gray-300 flex space-x-3">
+                <div className="items-center justify-center flex w-full">
+                    <div className="w-1/8 space-x-3" onMouseEnter={() => setShowArrows(true)} onMouseLeave={() => setShowArrows(false)}>
+                        { showArrows &&
+                            <button onClick={() => handleChangeOffset(-1)}>
+                                <div>
+                                    <Image
+                                        src={left_arrow}
+                                        width={25}
+                                        height={25}
+                                    />
+                                </div>
+                            </button>
+                        }
+                        <button onClick={() => setShowArrows(true)}>
+                            <div>
+                                {handleCurrent()}
+                            </div>
+                        </button>
+                        { showArrows &&
+                            <button onClick={() => handleChangeOffset(1)}>
+                                <div>
+                                    <Image
+                                        src={right_arrow}
+                                        width={25}
+                                        height={25}
+                                    />
+                                </div>
+                            </button>
+                        }
                     </div>
-                </button>
-                { showArrows &&
-                    <button onClick={() => handleChangeOffset(1)}>
-                        <div>
-                            <Image
-                                src={right_arrow}
-                                width={25}
-                                height={25}
-                            />
-                        </div>
-                    </button>
-                }
+                </div>
             </div>
             <div className="flex h-8 w-full justify-center items-center mt-3">
                 <div className="flex space-x-2 h-8 w-1/6 items-center justify-center text-[#95c4de]">

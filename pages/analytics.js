@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ItemTable from '../components/analytics/ItemTable'
 import VisualBar from '../components/analytics/VisualBar'
 import Visuals from '../components/analytics/Visuals'
 import ChangeDate from '../components/ChangeDate'
@@ -36,22 +37,7 @@ const drinks = () => {
         </div>
 
         <div className="w-screen flex mt-12">
-            <div className="flex flex-col w-screen h-full">
-                <div className="flex">
-                    <div className="text-white w-1/4 font-bold text-lg">Drink</div>
-                    <div className="text-white w-1/4 font-bold text-lg">Location</div>
-                    <div className="text-white w-1/4 font-bold text-lg">Cost</div>
-                    <div className="text-white w-1/4 font-bold text-lg">Bought</div>
-                    <div className="text-white w-1/4 font-bold text-lg">Calories</div>
-                </div>
-                <div className="flex bg-gray-500 rounded-lg mt-2">
-                    <div className="text-white text-sm w-1/4">Strawberry Milk Tea</div>
-                    <div className="text-white text-sm w-1/4">7 Leaves</div>
-                    <div className="text-white text-sm w-1/4">$4.20</div>
-                    <div className="text-white text-sm w-1/4">4/20/21</div>
-                    <div className="text-white text-sm w-1/4">150</div>
-                </div>
-            </div>
+          <ItemTable />
         </div>
       </>
   )
