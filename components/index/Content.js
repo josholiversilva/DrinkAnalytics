@@ -95,7 +95,7 @@ const Content = (props) => {
                     updates.map((update, idx) => {
                         return (
                             <div key={idx} className="flex w-full justify-center items-center">
-                                <div className="text-[#95c4fe] w-1/2 text-lg">
+                                <div className="text-[#95c4fe] w-1/2 text-lg shadow-md rounded-lg p-2 shadow-gray-200">
                                     {update}
                                 </div>
                             </div>
