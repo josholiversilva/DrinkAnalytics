@@ -23,11 +23,11 @@ ChartJS.register(
     Legend
 );
 
-const Spending = ({ data, time }) => {
+const Spending = ({ drinks, time }) => {
   var spending = 0
   var dates = {}
 
-  data.filter(item => {
+  drinks.filter(item => {
       spending += item.cost
       var dateSplit = item.date.split(' ')
       if (time === 'y') {

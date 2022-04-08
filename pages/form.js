@@ -90,34 +90,37 @@ const form = ({ drinks, restaurants }) => {
     // Submit Handler
     const onFormSubmit = e => {
         e.target.reset()
+        e.preventDefault();
         for (var key in formVals) {
             console.log(key)
             var value = formVals[key]
             console.log(`${key}=${value}`)
         }
-        // resetForm()
+        
         sendToDb(formVals)
-        alert("Form Submitted")
     }
 
-    const sendToDb = () => {
+    const sendToDb = async () => {
       // First Create/Update Restaurants (B/C restaurants have own table)
       const restaurantVals = {name: restaurant, rating: rating}
       console.log('restaurantVals:', restaurantVals)
       console.log('new restaurant:', newRestaurant)
-      newRestaurant ? createNewRestaurant(restaurant, rating) : updateRestaurant(restaurant, rating)
+      newRestaurant ? 
+        await createNewRestaurant(restaurant, rating) : 
+          await updateRestaurant(restaurant, rating)
       
       // Then create new drink
-      createNewDrink(formVals)
+      console.log('drinks payload: ', formVals)
+      await createNewDrink(formVals)
     }
 
     /*
     const resetForm = () => {
         console.log("RESEETTTINNG FORM")
-        setDrink()
+        setDrink('')
         setCost('')
         setRestaurant('')
-        setCity()
+        setCity('')
         setUSState('CA')
         setStartDate(new Date())
         setDesc('')
@@ -185,6 +188,7 @@ const form = ({ drinks, restaurants }) => {
                     <Form.Control 
                         value={city}
                         onChange={onCity} 
+                        placeholder="City"
                     />
                   </Form.Group>
   
@@ -270,7 +274,8 @@ const form = ({ drinks, restaurants }) => {
                             as="textarea" 
                             rows="2" 
                             name="description" 
-                            onChange={onDesc} 
+                            onChange={onDesc}
+                            placeholder="0% Sweet, honey boba, less ice"
                         />
                     </Form.Group>
                 </Row>
@@ -291,9 +296,9 @@ const form = ({ drinks, restaurants }) => {
                 </Row>
 
                 <div className="d-grid gap-2 pt-12">
-                  <Button variant="primary" type="submit">
+                  <button className="bg-blue-600 hover:bg-blue-300 hover:text-black rounded p-2 text-white text-bold">
                     Submit
-                  </Button>
+                  </button>
                 </div>
               </Form>
             </div>

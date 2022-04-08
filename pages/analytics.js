@@ -25,16 +25,45 @@ const analytics = () => {
   const { time, offset, timeDate } = useSelector(state => state.timeType)
   const d = getTimeDate(time, offset)
   
-  const { data, error } = useSWR(`http://localhost:3001/drinks/${time}/${d}`, fetcher)
+  // const { data, error } = useSWR(`http://localhost:3001/drinks/${time}/${d}`, fetcher)
+  const getData = (dataType) => {
+    if (dataType === 'drinks') {
+        const { data, error } = useSWR(`http://localhost:3001/drinks/${time}/${d}`, fetcher)
+        return {drinks: data, errorDrinks: error}
+    }
+    else {
+        const { data, error } = useSWR(`http://localhost:3001/restaurants`, fetcher)
+        return {restaurants: data, errorRestaurants: error}
+    }
+  }
 
-  if (error) return <div className="w-full flex items-center justify-center mt-2 text-white">Unable to Receive Info...</div>
-  if (!data) return <div className="w-full flex items-center justify-center mt-2 text-white">Loading...</div>
+  const { drinks, errorDrinks } = getData('drinks')
+  const { restaurants, errorRestaurants } = getData('restaurants')
+
+  if (errorDrinks || errorRestaurants) return <div className="w-full flex items-center justify-center mt-2 text-white">Unable to Receive Info...</div>
+  if (!drinks || !restaurants) return <div className="w-full flex items-center justify-center mt-2 text-white">Loading...</div>
+
+  var rIdToName = {}
+  restaurants.map(r => {
+    rIdToName[r.id] = r.name
+  })
+  console.log('ridtoname:', rIdToName)
+
+  const drinkSize = Object.keys(drinks).length
 
   return (
       <>
         <div className="w-full flex items-center justify-center mt-2">
             <div className="w-96 h-96">
-              <Visuals visType={visMap[vis]} vis={vis} data={data} />
+              { drinkSize > 0 ? 
+                <Visuals visType={visMap[vis]} vis={vis} drinkSize={drinkSize} drinks={drinks} restaurants={rIdToName} />
+                :
+                <>
+                <div className="flex h-full w-full justify-center items-center">
+                  <div className="text-white text-xl">Empty</div>
+                </div>
+                </>
+              }
             </div>
         </div>
         <div className="flex w-full">
@@ -50,7 +79,7 @@ const analytics = () => {
         </div>
 
         <div className="w-screen flex mt-12">
-          <ItemTable data={data} />
+          <ItemTable drinks={drinks} restaurants={rIdToName} />
         </div>
       </>
   )
