@@ -1,17 +1,6 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import useSWR from 'swr'
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json())
-
-const ItemTable = () => {
-    const { time, timeDate } = useSelector(state => state.timeType)
-
-    const { data, error } = useSWR(`http://localhost:3001/drinks/${time}/${timeDate[time]}`, fetcher)
-    if (error) return <div>Failed to load</div>
-    if (!data) return <div>Loading...</div>
-    console.log('data:', data)
-
+const ItemTable = ({ data }) => {
     return(
         <div className="flex flex-col w-screen h-full">
             <div className="flex">
@@ -21,16 +10,16 @@ const ItemTable = () => {
                 <div className="text-white w-1/4 font-bold text-lg">Bought</div>
                 <div className="text-white w-1/4 font-bold text-lg">Calories</div>
             </div>
-            {
+            {   
                 data.map((item, idx) => {
                     return (
                         <>
-                            <div className="flex bg-gray-500 rounded-lg mt-2">
-                                <div key={idx} className="text-white w-1/4 font-bold text-sm">{item.name}</div>
-                                <div key={idx} className="text-white w-1/4 font-bold text-sm">{item.restaurantid}</div>
-                                <div key={idx} className="text-white w-1/4 font-bold text-sm">{item.cost}</div>
-                                <div key={idx} className="text-white w-1/4 font-bold text-sm">{item.date}</div>
-                                <div key={idx} className="text-white w-1/4 font-bold text-sm">{0}</div>
+                            <div key={idx} className={`flex ${idx % 2 === 0 ? 'bg-gray-500' : ''} rounded-lg mt-2 transition ease-in-out duration-500 hover:bg-[#95c4fe] fade-in`}>
+                                <div key={item.name-idx} className="text-white w-1/4 font-bold text-sm">{item.name}</div>
+                                <div className="text-white w-1/4 font-bold text-sm">{item.restaurantid}</div>
+                                <div className="text-white w-1/4 font-bold text-sm">{item.cost}</div>
+                                <div className="text-white w-1/4 font-bold text-sm">{item.date}</div>
+                                <div className="text-white w-1/4 font-bold text-sm">{0}</div>
                             </div>
                         </>
                     )

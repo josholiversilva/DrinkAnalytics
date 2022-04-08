@@ -4,9 +4,10 @@ import { Pie } from 'react-chartjs-2'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-const Item = ({ data, itemType }) => {
+const Item = ({ itemType, data }) => {
   var itemLabels = {}
   console.log(itemType)
+
   data.map(item => {
     if (itemType === 'Drinks')
       itemLabels[item.name] === undefined ? itemLabels[item.name] = 1 : itemLabels[item.name] += 1

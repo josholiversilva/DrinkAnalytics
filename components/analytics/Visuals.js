@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Item from './Visuals/Item'
 import Spending from './Visuals/Spending'
 
-const Visuals = ({ visType, vis, data }) => {
+const Visuals = ({ visType, vis, data, time }) => {
     
     if (visType === 'Items') {
         return (
