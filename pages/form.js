@@ -129,6 +129,8 @@ const form = ({ drinks, restaurants }) => {
     }
     */
 
+    console.log(' DRINNKKK --', drink)
+
     return (
         <>
           <div className="flex justify-center items-center h-full">
@@ -138,58 +140,107 @@ const form = ({ drinks, restaurants }) => {
                 <Row className="mb-3">
                   <Form.Group as={Col}>
                     <Form.Label>Drink</Form.Label>
-                      <Typeahead
-                        allowNew
-                        value={drink}
-                        id="custom-selections-example"
-                        newSelectionPrefix="New Drink: "
-                        options={drinkOpts}
-                        placeholder="Oolong Milk Tea"
-                        onChange={onDrink}
-                        inputProps={{ required: true }}
-                      />
+                      { drink === undefined ?
+                          <Typeahead
+                            allowNew
+                            value={drink}
+                            id="custom-selections-example"
+                            newSelectionPrefix="New Drink: "
+                            options={drinkOpts}
+                            placeholder="Oolong Milk Tea"
+                            onChange={onDrink}
+                            inputProps={{ required: true }}
+                          />
+                        :
+                          <Typeahead
+                            allowNew
+                            value={drink}
+                            id="custom-selections-example"
+                            newSelectionPrefix="New Drink: "
+                            options={drinkOpts}
+                            placeholder="Oolong Milk Tea"
+                            onChange={onDrink}
+                            inputProps={{ required: true, className:"bg-green-200 border-2 border-green-400" }}
+                          />
+                    }
                   </Form.Group>
 
                   <Form.Group as={Col}>
                     <Form.Label>Drink Cost</Form.Label>
-                    <CurrencyInput 
-                        required
-                        value={cost}
-                        className="form-control"
-                        id="cost"
-                        name="cost"
-                        prefix="$"
-                        placeholder="4.50"
-                        decimalsLimit={2}
-                        onValueChange={(value, name)=>onCost(value, name)}
-                    />
+                    { cost === undefined ?
+                        <CurrencyInput 
+                          required
+                          value={cost}
+                          className="form-control"
+                          id="cost"
+                          name="cost"
+                          prefix="$"
+                          placeholder="4.50"
+                          decimalsLimit={2}
+                          onValueChange={(value, name)=>onCost(value, name)}
+                        />
+                      :
+                        <CurrencyInput 
+                            required
+                            value={cost}
+                            className="form-control bg-green-400 border-2 border-green-400"
+                            id="cost"
+                            name="cost"
+                            prefix="$"
+                            placeholder="4.50"
+                            decimalsLimit={2}
+                            onValueChange={(value, name)=>onCost(value, name)}
+                        />
+                    }
                   </Form.Group>
                 </Row>
 
                 <Row className="mb-3">
                     <Form.Group as={Col}>
                         <Form.Label>Restaurant</Form.Label>
-                        <Typeahead
-                          allowNew
-                          value={restaurant}
-                          id="custom-selections-example"
-                          newSelectionPrefix="New Restaurant: "
-                          options={restaurantOpts}
-                          placeholder="Wushiland"
-                          onChange={onRestaurant}
-                          inputProps={{ required: true }}
-                        />
+                        { restaurant === undefined ?
+                            <Typeahead
+                              allowNew
+                              value={restaurant}
+                              id="custom-selections-example"
+                              newSelectionPrefix="New Restaurant: "
+                              options={restaurantOpts}
+                              placeholder="Wushiland"
+                              onChange={onRestaurant}
+                              inputProps={{ required: true }}
+                            />
+                          :
+                            <Typeahead
+                              allowNew
+                              value={restaurant}
+                              id="custom-selections-example"
+                              newSelectionPrefix="New Restaurant: "
+                              options={restaurantOpts}
+                              placeholder="Wushiland"
+                              onChange={onRestaurant}
+                              inputProps={{ required: true, className:"bg-green-200 border-2 border-green-400"}}
+                            />
+                        }
                     </Form.Group>
                 </Row>
 
                 <Row className="mb-3">
                   <Form.Group as={Col}>
                     <Form.Label>City</Form.Label>
-                    <Form.Control 
-                        value={city}
-                        onChange={onCity} 
-                        placeholder="City"
-                    />
+                    { city === undefined ?
+                     <Form.Control 
+                          value={city}
+                          onChange={onCity} 
+                          placeholder="City"
+                      />
+                    :
+                      <Form.Control 
+                          value={city}
+                          onChange={onCity} 
+                          placeholder="City"
+                          className="bg-green-200 border-2 border-green-400"
+                      />
+                    }
                   </Form.Group>
   
                   <Form.Group as={Col}>
@@ -200,6 +251,7 @@ const form = ({ drinks, restaurants }) => {
                         onChange={e => {
                           setUSState(e.target.value);
                         }}
+                        className="bg-green-200 border-2 border-green-400"
                       >
 			                  <option value="CA">California</option>
                         <option value="AK">Alaska</option>
@@ -259,7 +311,7 @@ const form = ({ drinks, restaurants }) => {
                   <Form.Group as={Col}>
                     <Form.Label>Date</Form.Label>
                     <DatePicker
-                        className="form-control"
+                        className="form-control bg-green-200 border-2 border-green-400"
                         selected={startDate}
                         onChange={(date)=>setStartDate(date)}
                     />
@@ -270,12 +322,13 @@ const form = ({ drinks, restaurants }) => {
                     <Form.Group as={Col}>
                         <Form.Label>Description</Form.Label>
                         <Form.Control 
-                            value={desc}
-                            as="textarea" 
-                            rows="2" 
-                            name="description" 
-                            onChange={onDesc}
-                            placeholder="0% Sweet, honey boba, less ice"
+                          value={desc}
+                          as="textarea" 
+                          rows="2" 
+                          name="description" 
+                          onChange={onDesc}
+                          placeholder="0% Sweet, honey boba, less ice"
+                          className="form-control bg-green-200 border-2 border-green-400"
                         />
                     </Form.Group>
                 </Row>
@@ -290,7 +343,7 @@ const form = ({ drinks, restaurants }) => {
                             size={50}
                             count={5}
                             isHalf={true}
-                            activeColor={"cyan"}
+                            activeColor={"#95c4fe"}
                         />
                     </Form.Group>
                 </Row>

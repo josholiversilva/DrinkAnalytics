@@ -4,7 +4,7 @@ import { Pie } from 'react-chartjs-2'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-const Item = ({ itemType, drinks }) => {
+const Item = ({ itemType, drinks, restaurants }) => {
   var itemLabels = {}
   console.log(itemType)
 
@@ -12,10 +12,14 @@ const Item = ({ itemType, drinks }) => {
     if (itemType === 'Drinks')
       itemLabels[item.name] === undefined ? itemLabels[item.name] = 1 : itemLabels[item.name] += 1
     else if (itemType === 'Restaurants')
-      itemLabels[item.restaurantid] === undefined ? itemLabels[item.restaurantid] = 1 : itemLabels[item.restaurantid] += 1
+      itemLabels[restaurants[item.restaurantid]] === undefined ? itemLabels[restaurants[item.restaurantid]] = 1 : itemLabels[restaurants[item.restaurantid]] += 1
     else
       itemLabels[item.name] === undefined ? itemLabels[item.name] = 1 : itemLabels[item.name] += 1
   })
+
+  const options = {
+    responsive: true
+  };
 
   console.log('itemlabels:', itemLabels)
     const itemData = {
@@ -46,9 +50,11 @@ const Item = ({ itemType, drinks }) => {
     };
     
     return (
+      <div className="w-full h-full flex items-center justify-center">
         <Pie 
             data={itemData}
         />
+      </div>
     )
 }
 

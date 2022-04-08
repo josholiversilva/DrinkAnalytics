@@ -108,7 +108,10 @@ const Spending = ({ drinks, time }) => {
       
   return (
     <>
-      <Line options={options} data={spendingData} />
+
+      <div className="w-full h-full flex items-center justify-center">
+        <Line options={options} data={spendingData} />
+      </div>
     </>
   )
 }

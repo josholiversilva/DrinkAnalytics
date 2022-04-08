@@ -56,7 +56,7 @@ const analytics = () => {
         <div className="w-full flex items-center justify-center mt-2">
             <div className="w-96 h-96">
               { drinkSize > 0 ? 
-                <Visuals visType={visMap[vis]} vis={vis} drinkSize={drinkSize} drinks={drinks} restaurants={rIdToName} />
+                <Visuals visType={visMap[vis]} vis={vis} time={time} drinkSize={drinkSize} drinks={drinks} restaurants={rIdToName} />
                 :
                 <>
                 <div className="flex h-full w-full justify-center items-center">
