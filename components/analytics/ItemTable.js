@@ -18,7 +18,7 @@ const ItemTable = ({ drinks, restaurants }) => {
                 <div className="text-white w-1/4 font-bold text-lg">Location</div>
                 <div className="text-white w-1/4 font-bold text-lg">Cost</div>
                 <div className="text-white w-1/4 font-bold text-lg">Bought</div>
-                <div className="text-white w-1/4 font-bold text-lg">Calories</div>
+                <div className="text-white w-1/4 font-bold text-lg">Rating</div>
             </div>
             {   
                 drinks.map((item, idx) => {
@@ -29,7 +29,7 @@ const ItemTable = ({ drinks, restaurants }) => {
                                 <div className="text-white w-1/4 font-bold text-sm">{restaurants[item.restaurantid]}</div>
                                 <div className="text-white w-1/4 font-bold text-sm">{formatToCurrency(item.cost)}</div>
                                 <div className="text-white w-1/4 font-bold text-sm">{item.date}</div>
-                                <div className="text-white w-1/4 font-bold text-sm">{0}</div>
+                                <div className="text-white w-1/4 font-bold text-sm">{item.rating}</div>
                             </div>
                         </>
                     )

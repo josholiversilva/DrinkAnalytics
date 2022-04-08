@@ -19,7 +19,7 @@ const analytics = () => {
     'Drinks': 'Items',
     'Restaurants': 'Items',
     'Spending': 'Spending',
-    'Health': 'Items'
+    'Ranking': 'Ranking'
   }
 
   const { time, offset, timeDate } = useSelector(state => state.timeType)
@@ -71,7 +71,7 @@ const analytics = () => {
             <VisualBar currVis={vis} vis={'Drinks'} visMap={visMap} onHandleChangeVis={handleChangeVis} />
             <VisualBar currVis={vis} vis={'Spending'} visMap={visMap} onHandleChangeVis={handleChangeVis} />
             <VisualBar currVis={vis} vis={'Restaurants'} visMap={visMap} onHandleChangeVis={handleChangeVis} />
-            <VisualBar currVis={vis} vis={'Health'} visMap={visMap} onHandleChangeVis={handleChangeVis} />
+            <VisualBar currVis={vis} vis={'Ranking'} visMap={visMap} onHandleChangeVis={handleChangeVis} />
           </div>
           <div className="w-1/2 mt-4 flex flex-col">
             <ChangeDate time={time} offset={offset} timeDate={timeDate} />
