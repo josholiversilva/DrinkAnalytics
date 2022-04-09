@@ -1,23 +1,22 @@
-import GoogleLogin from 'react-google-login';
-
-const responseGoogle = (response) => {
-    console.log(response);
-}
+import Image from 'next/image';
+import google_icon from '../../public/google_icon.png'
+import { signIn } from 'next-auth/react';
 
 const Google = () => {
     return (
         <>
-            <GoogleLogin
-                isSignedIn={true}
-                clientId="290575140718-7i94ac4uhbn0gvu6akju74hb0qc893bp.apps.googleusercontent.com"
-                render={renderProps => (
-                    <button className="mb-4" onClick={renderProps.onClick} disabled={renderProps.disabled}>Login With Google</button>
-                )}
-                buttonText="Login"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={'single_host_origin'}
-            />
+            <button className="border-2 border-white rounded-lg p-2 flex space-x-2" onClick={() => signIn({'provider': 'google'}, { callbackUrl: "/"})}>
+                <div>
+                    <Image
+                        src={google_icon}
+                        width={24}
+                        height={24}
+                    />
+                </div>
+                <div className="text-center h-full">
+                    Login With Google
+                </div>
+            </button>
         </>
     )
 }

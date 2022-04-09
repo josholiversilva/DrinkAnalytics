@@ -327,7 +327,7 @@ const form = ({ drinks, restaurants }) => {
                           rows="2" 
                           name="description" 
                           onChange={onDesc}
-                          placeholder="0% Sweet, honey boba, less ice"
+                          placeholder="(Optional Description) 0% Sweet, honey boba, less ice"
                           className="form-control bg-green-200 border-2 border-green-400"
                         />
                     </Form.Group>
