@@ -30,6 +30,7 @@ const ItemTable = ({ drinks, restaurants }) => {
                         </>
                     )
                 })
+                .reverse()
             }
         </div>
     )

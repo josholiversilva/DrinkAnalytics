@@ -3,11 +3,15 @@ import Header from './Header';
 import Layout from './Layout';
 import Login from './login/Login';
 import { getProviders, getSession, useSession } from 'next-auth/react';
+import { useSelector } from 'react-redux';
 
 const AppWrapper = ({ Component, pageProps, providers }) => {
     const { data: session } = useSession()
+    const { isGuest } = useSelector(state => state.login)
 
-    if (!session) return <Login />
+    console.log('isGuest: ', isGuest)
+
+    if (!session && !isGuest) return <Login />
 
     console.log('session data after login:', session)
     return (

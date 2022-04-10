@@ -4,7 +4,7 @@ import { Pie } from 'react-chartjs-2'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-const Item = ({ itemType, drinks, restaurants }) => {
+const Item = ({ itemType, drinks, restaurantIdToName }) => {
   var itemLabels = {}
   console.log(itemType)
 
@@ -12,7 +12,7 @@ const Item = ({ itemType, drinks, restaurants }) => {
     if (itemType === 'Drinks')
       itemLabels[item.name] === undefined ? itemLabels[item.name] = 1 : itemLabels[item.name] += 1
     else if (itemType === 'Restaurants')
-      itemLabels[restaurants[item.restaurantid]] === undefined ? itemLabels[restaurants[item.restaurantid]] = 1 : itemLabels[restaurants[item.restaurantid]] += 1
+      itemLabels[restaurantIdToName[item.restaurantid]] === undefined ? itemLabels[restaurantIdToName[item.restaurantid]] = 1 : itemLabels[restaurantIdToName[item.restaurantid]] += 1
     else
       itemLabels[item.name] === undefined ? itemLabels[item.name] = 1 : itemLabels[item.name] += 1
   })

@@ -18,5 +18,8 @@ export default NextAuth({
             session.user.uid = token.sub
             return session
         },
+        async signIn({ account, profile }) {
+            return true // Do different verification for other providers that don't have `email_verified`
+        },
       }
 })

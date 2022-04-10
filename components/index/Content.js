@@ -40,7 +40,6 @@ const Content = (props) => {
     if (!drinks || !restaurants) return <div className="text-white">Loading...</div>
 
     if (drinks) {
-        console.log(drinks, restaurants)
         drinks.filter(d => {
             spending += d.cost
             drinkSet.add(d.name)
@@ -62,7 +61,7 @@ const Content = (props) => {
                 <div className="flex space-x-2 w-full items-center justify-center">
                     <button onClick={() => handleAnalyticChange('analytics')} className="shadow-lg bg-[#95c4fe] w-1/4 h-24 rounded-md">
                         <div>
-                            <span>0 Calories</span>
+                            <span>{Math.max(drinkCount, restaurantCount)} Rankings</span>
                         </div>
                     </button>
                     <button onClick={() => handleAnalyticChange('analytics')} className="shadow-lg bg-[#95c4fe] w-1/4 h-24 rounded-md">
@@ -101,6 +100,7 @@ const Content = (props) => {
                             </div>
                         )
                     })
+                    .reverse()
                 }
             </div>
         </>

@@ -6,10 +6,16 @@ import DatePicker from "react-datepicker";
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { createNewRestaurant, updateRestaurant } from '../features/restaurant/restaurantAPI'
 import { createNewDrink } from '../features/drinks/drinksAPI'
+import { useSession } from 'next-auth/react';
+import { useSelector } from 'react-redux';
 
 import "react-datepicker/dist/react-datepicker.css";
 
+
 const form = ({ drinks, restaurants }) => {
+    const { data: session } = useSession()
+    const { isGuest } = useSelector(state => state.login)
+
     const [usState, setUSState] = useState('CA');
     const [startDate, setStartDate] = useState(new Date());
 
@@ -21,7 +27,6 @@ const form = ({ drinks, restaurants }) => {
     const [drinkOpts, setDrinkOpts] = useState([])
     const [drink, setDrink] = useState(),
         onDrink = (value) => {
-          console.log(value)
           if (typeof value[0] !== "string")
             value.length > 0 ? setDrink(value[0].label) : setDrink()
           else
@@ -30,13 +35,11 @@ const form = ({ drinks, restaurants }) => {
     const [cost, setCost] = useState(),
         onCost = (value, name) => {
             setCost(value)
-            console.log(value, name)
         }
     const [newRestaurant, setNewRestaurant] = useState(false)
     const [restaurantOpts, setRestaurantOpts] = useState([])
     const [restaurant, setRestaurant] = useState(),
       onRestaurant = (value) => {
-        console.log(value)
         if (typeof value[0] !== "string") {
           setNewRestaurant(true)
           value.length > 0 ? setRestaurant(value[0].label) : setRestaurant()
@@ -49,16 +52,13 @@ const form = ({ drinks, restaurants }) => {
     const [city, setCity] = useState(),
         onCity = ({target:{value}}) => {
             setCity(value)
-            console.log(value)
         }
     const [desc, setDesc] = useState(),
         onDesc = ({target:{value}}) => {
             setDesc(value)
-            console.log(value)
         }
     const [rating, setRating] = useState(),
         onRating = (newRating) => {
-            console.log(newRating)
             setRating(newRating)
         }
 
@@ -69,13 +69,13 @@ const form = ({ drinks, restaurants }) => {
       var restaurantNames = restaurants.map(restaurant => {
         return restaurant.name
       })
-      console.log(drinkNames, restaurantNames)
      useEffect(() => {
        setDrinkOpts(drinkNames)
        setRestaurantOpts(restaurantNames)
      }, [])
 
     // Form Object
+    const clientUserId = session ? session.user.email : 'guest'
     const formVals = {
         name: drink,
         cost: cost,
@@ -84,7 +84,8 @@ const form = ({ drinks, restaurants }) => {
         state: usState, 
         date: startDate,
         description: desc, 
-        rating: rating
+        rating: rating,
+        userId: clientUserId
     }
 
     // Submit Handler
@@ -92,9 +93,7 @@ const form = ({ drinks, restaurants }) => {
         e.target.reset()
         e.preventDefault();
         for (var key in formVals) {
-            console.log(key)
             var value = formVals[key]
-            console.log(`${key}=${value}`)
         }
         
         sendToDb(formVals)
@@ -102,34 +101,20 @@ const form = ({ drinks, restaurants }) => {
 
     const sendToDb = async () => {
       // First Create/Update Restaurants (B/C restaurants have own table)
+      setIsSubmitting(true)
       const restaurantVals = {name: restaurant, rating: rating}
-      console.log('restaurantVals:', restaurantVals)
-      console.log('new restaurant:', newRestaurant)
       newRestaurant ? 
         await createNewRestaurant(restaurant, rating) : 
           await updateRestaurant(restaurant, rating)
       
       // Then create new drink
-      console.log('drinks payload: ', formVals)
       await createNewDrink(formVals)
+
+      setSubmitted(true)
     }
 
-    /*
-    const resetForm = () => {
-        console.log("RESEETTTINNG FORM")
-        setDrink('')
-        setCost('')
-        setRestaurant('')
-        setCity('')
-        setUSState('CA')
-        setStartDate(new Date())
-        setDesc('')
-        setStarsKey(Math.random());
-        setRating('');
-    }
-    */
-
-    console.log(' DRINNKKK --', drink)
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitted, setSubmitted] = useState(false)
 
     return (
         <>
@@ -149,7 +134,7 @@ const form = ({ drinks, restaurants }) => {
                             options={drinkOpts}
                             placeholder="Oolong Milk Tea"
                             onChange={onDrink}
-                            inputProps={{ required: true }}
+                            inputProps={{ required: true, className:"form-control"}}
                           />
                         :
                           <Typeahead
@@ -160,7 +145,7 @@ const form = ({ drinks, restaurants }) => {
                             options={drinkOpts}
                             placeholder="Oolong Milk Tea"
                             onChange={onDrink}
-                            inputProps={{ required: true, className:"bg-green-200 border-2 border-green-400" }}
+                            inputProps={{ required: true, className:"form-control bg-green-200 border-2 border-green-400" }}
                           />
                     }
                   </Form.Group>
@@ -183,7 +168,7 @@ const form = ({ drinks, restaurants }) => {
                         <CurrencyInput 
                             required
                             value={cost}
-                            className="form-control bg-green-400 border-2 border-green-400"
+                            className="form-control bg-green-200 border-2 border-green-400"
                             id="cost"
                             name="cost"
                             prefix="$"
@@ -207,7 +192,7 @@ const form = ({ drinks, restaurants }) => {
                               options={restaurantOpts}
                               placeholder="Wushiland"
                               onChange={onRestaurant}
-                              inputProps={{ required: true }}
+                              inputProps={{ required: true, className:"form-control"}}
                             />
                           :
                             <Typeahead
@@ -218,7 +203,7 @@ const form = ({ drinks, restaurants }) => {
                               options={restaurantOpts}
                               placeholder="Wushiland"
                               onChange={onRestaurant}
-                              inputProps={{ required: true, className:"bg-green-200 border-2 border-green-400"}}
+                              inputProps={{ required: true, className:"form-control bg-green-200 border-2 border-green-400"}}
                             />
                         }
                     </Form.Group>
@@ -349,10 +334,16 @@ const form = ({ drinks, restaurants }) => {
                 </Row>
 
                 <div className="d-grid gap-2 pt-12">
-                  <button className="bg-blue-600 hover:bg-blue-300 hover:text-black rounded p-2 text-white text-bold">
+                  <button className={`bg-blue-600 ${isSubmitting ? '' : 'hover:bg-blue-300'} hover:text-black rounded p-2 text-white text-bold`} disabled={isSubmitting}>
                     Submit
                   </button>
                 </div>
+                {
+                  submitted && 
+                    <div className="bg-green-200 w-full rounded p-2 text-center text-black mt-2">
+                      Submitted Form!
+                    </div>
+                }
               </Form>
             </div>
           </div>

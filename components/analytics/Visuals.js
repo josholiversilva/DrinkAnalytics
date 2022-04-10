@@ -3,15 +3,15 @@ import Item from './Visuals/Item'
 import Ranking from './Visuals/Ranking'
 import Spending from './Visuals/Spending'
 
-const Visuals = ({ visType, vis, drinks, restaurants, time }) => {
+const Visuals = ({ visType, vis, drinks, restaurantIdToName, restaurants, time }) => {
     if (visType === 'Items') {
         return (
-            <Item drinks={drinks} restaurants={restaurants} itemType={vis} />
+            <Item drinks={drinks} restaurantIdToName={restaurantIdToName} itemType={vis} />
         )
     }
     else if (visType === 'Ranking') {
         return (
-            <Ranking />
+            <Ranking drinks={drinks} restaurants={restaurants} />
         )
     }
     else {

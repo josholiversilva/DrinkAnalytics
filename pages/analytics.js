@@ -25,7 +25,6 @@ const analytics = () => {
   const { time, offset, timeDate } = useSelector(state => state.timeType)
   const d = getTimeDate(time, offset)
   
-  // const { data, error } = useSWR(`http://localhost:3001/drinks/${time}/${d}`, fetcher)
   const getData = (dataType) => {
     if (dataType === 'drinks') {
         const { data, error } = useSWR(`http://localhost:3001/drinks/${time}/${d}`, fetcher)
@@ -47,7 +46,6 @@ const analytics = () => {
   restaurants.map(r => {
     rIdToName[r.id] = r.name
   })
-  console.log('ridtoname:', rIdToName)
 
   const drinkSize = Object.keys(drinks).length
 
@@ -56,12 +54,12 @@ const analytics = () => {
         <div className="w-full flex items-center justify-center mt-2">
             <div className="w-96 h-96">
               { drinkSize > 0 ? 
-                <Visuals visType={visMap[vis]} vis={vis} time={time} drinkSize={drinkSize} drinks={drinks} restaurants={rIdToName} />
+                <Visuals visType={visMap[vis]} vis={vis} time={time} drinkSize={drinkSize} drinks={drinks} restaurantIdToName={rIdToName} restaurants={restaurants} />
                 :
                 <>
-                <div className="flex h-full w-full justify-center items-center">
-                  <div className="text-white text-xl">Empty</div>
-                </div>
+                  <div className="flex h-full w-full justify-center items-center">
+                    <div className="text-white text-xl">Empty</div>
+                  </div>
                 </>
               }
             </div>
