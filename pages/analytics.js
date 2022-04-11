@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import ItemTable from '../components/analytics/ItemTable'
 import VisualBar from '../components/analytics/VisualBar'
 import Visuals from '../components/analytics/Visuals'
 import ChangeDate from '../components/ChangeDate'
 import { useSelector } from 'react-redux';
-import useSWR from 'swr'
 import { getTimeDate } from '../features/timeType/getTimeDate'
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json())
+import { getDrinks, getDrinksWithinDate, getRestaurants } from '../features/content/getData'
+import { useSession } from 'next-auth/react'
 
 const analytics = () => {
+  const { data: session } = useSession()
   const [vis, setVis] = useState('Drinks')
   const handleChangeVis = (newVis) => {
     setVis(newVis)
@@ -22,22 +22,18 @@ const analytics = () => {
     'Ranking': 'Ranking'
   }
 
-  const { time, offset, timeDate } = useSelector(state => state.timeType)
-  const d = getTimeDate(time, offset)
+  const { time, offset } = useSelector(state => state.timeType)
   
-  const getData = (dataType) => {
-    if (dataType === 'drinks') {
-        const { data, error } = useSWR(`http://localhost:3001/drinks/${time}/${d}`, fetcher)
-        return {drinks: data, errorDrinks: error}
-    }
-    else {
-        const { data, error } = useSWR(`http://localhost:3001/restaurants`, fetcher)
-        return {restaurants: data, errorRestaurants: error}
-    }
-  }
+  const { isGuest } = useSelector(state => state.login)
+  var userEmail = ''
+  if (isGuest)
+    userEmail="guest@guest.com"
+  else
+    userEmail=session.user.email
 
-  const { drinks, errorDrinks } = getData('drinks')
-  const { restaurants, errorRestaurants } = getData('restaurants')
+  const timeDate = getTimeDate(time, offset)
+  const { drinks, errorDrinks } = getDrinksWithinDate(userEmail, time, timeDate)
+  const { restaurants, errorRestaurants } = getRestaurants(userEmail)
 
   if (errorDrinks || errorRestaurants) return <div className="w-full flex items-center justify-center mt-2 text-white">Unable to Receive Info...</div>
   if (!drinks || !restaurants) return <div className="w-full flex items-center justify-center mt-2 text-white">Loading...</div>

@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './Header';
 import Layout from './Layout';
 import Login from './login/Login';
 import { getProviders, getSession, useSession } from 'next-auth/react';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
-const AppWrapper = ({ Component, pageProps, providers }) => {
+const AppWrapper = ({ Component, pageProps }) => {
     const { data: session } = useSession()
-    const { isGuest } = useSelector(state => state.login)
-
-    console.log('isGuest: ', isGuest)
+    var { isGuest } = useSelector(state => state.login)
 
     if (!session && !isGuest) return <Login />
-
+    
+    console.log('isGuest:', isGuest)
     console.log('session data after login:', session)
     return (
         <div className="bg-[#19222e]">
@@ -27,14 +27,10 @@ const AppWrapper = ({ Component, pageProps, providers }) => {
 export default AppWrapper;
 
 export async function getServerSideProps(ctx) {
-    const providers = await getProviders(ctx)
     const session = await getSession(ctx)
-
-    console.log('getserverprops:', providers)
 
     return {
         props: {
-            providers,
             session
         }
     }

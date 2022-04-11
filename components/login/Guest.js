@@ -4,6 +4,7 @@ import profile from '../../public/profile.png'
 import { signIn } from 'next-auth/react';
 import { useDispatch } from 'react-redux';
 import { changeIsGuest } from '../../features/login/loginSlice';
+import AppWrapper from '../AppWrapper';
 
 const Guest = () => {
     const dispatch = useDispatch()

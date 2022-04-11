@@ -1,13 +1,13 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux';
-import useSWR from 'swr'
 import { getTimeDate } from '../../features/timeType/getTimeDate';
 import { formatToCurrency } from '../../features/currency/convertToDollar'
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json())
+import { getDrinks, getDrinksWithinDate, getRestaurants } from '../../features/content/getData';
+import { useSession } from 'next-auth/react';
 
 const Content = (props) => {
+    const { data: session } = useSession()
     const { time, offset } = useSelector(state => state.timeType)
 
     const router = useRouter()
@@ -15,22 +15,16 @@ const Content = (props) => {
         router.push(`/${analyticChange}`)
     }
 
-    const updates = []
-
-    const d = getTimeDate(time, offset)
-    const getData = (dataType) => {
-        if (dataType === 'drinks') {
-            const { data, error } = useSWR(`http://localhost:3001/drinks/${time}/${d}`, fetcher)
-            return {drinks: data, errorDrinks: error}
-        }
-        else {
-            const { data, error } = useSWR(`http://localhost:3001/restaurants`, fetcher)
-            return {restaurants: data, errorRestaurants: error}
-        }
-    }
-
-    const { drinks, errorDrinks } = getData('drinks')
-    const { restaurants, errorRestaurants } = getData('restaurants')
+    const { isGuest } = useSelector(state => state.login)
+    var userEmail = ''
+    if (isGuest)
+        userEmail="guest@guest.com"
+    else
+        userEmail=session.user.email
+    
+    const timeDate = getTimeDate(time, offset)
+    const { drinks, errorDrinks } = getDrinksWithinDate(userEmail, time, timeDate) // getDrinks(userEmail)
+    const { restaurants, errorRestaurants } = getRestaurants(userEmail)
 
     var spending = 0
     var drinkSet = new Set()
@@ -39,19 +33,18 @@ const Content = (props) => {
     if (errorDrinks || errorRestaurants) return <div className="text-white">Failed to load</div>
     if (!drinks || !restaurants) return <div className="text-white">Loading...</div>
 
-    if (drinks) {
-        drinks.filter(d => {
-            spending += d.cost
-            drinkSet.add(d.name)
-            restaurantSet.add(d.restaurantid)
-            var restaurantName = ''
-            restaurants.filter(r => {if (r.id === d.restaurantid) restaurantName=r.name})
-            if (updates.length < 10) {
-                const updateText = `[${d.date}] Bought ${d.name} for ${formatToCurrency(d.cost)} at ${restaurantName} ${d.description === null ? '' : 'with ' + d.description}`
-                updates.push(updateText)
-            }
-        })
-    }
+    const updates = []
+    drinks.filter(d => {
+        spending += d.cost
+        drinkSet.add(d.name)
+        restaurantSet.add(d.restaurantid)
+        var restaurantName = ''
+        restaurants.filter(r => {if (r.id === d.restaurantid) restaurantName=r.name})
+        if (updates.length < 10) {
+            const updateText = `[${d.date}] Bought ${d.name} for ${formatToCurrency(d.cost)} at ${restaurantName} ${d.description === null ? '' : 'with ' + d.description}`
+            updates.push(updateText)
+        }
+    })
     const drinkCount = drinkSet.size
     const restaurantCount = restaurantSet.size
 

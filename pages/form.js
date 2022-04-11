@@ -75,7 +75,7 @@ const form = ({ drinks, restaurants }) => {
      }, [])
 
     // Form Object
-    const clientUserId = session ? session.user.email : 'guest'
+    const clientUserEmail = isGuest ? 'guest@guest.com' : session.user.email
     const formVals = {
         name: drink,
         cost: cost,
@@ -85,16 +85,13 @@ const form = ({ drinks, restaurants }) => {
         date: startDate,
         description: desc, 
         rating: rating,
-        userId: clientUserId
+        userEmail: clientUserEmail
     }
 
     // Submit Handler
     const onFormSubmit = e => {
         e.target.reset()
         e.preventDefault();
-        for (var key in formVals) {
-            var value = formVals[key]
-        }
         
         sendToDb(formVals)
     }
@@ -102,10 +99,10 @@ const form = ({ drinks, restaurants }) => {
     const sendToDb = async () => {
       // First Create/Update Restaurants (B/C restaurants have own table)
       setIsSubmitting(true)
-      const restaurantVals = {name: restaurant, rating: rating}
+      const restaurantVals = {name: restaurant, rating: rating, userEmail: clientUserEmail}
       newRestaurant ? 
-        await createNewRestaurant(restaurant, rating) : 
-          await updateRestaurant(restaurant, rating)
+        await createNewRestaurant(restaurantVals) : 
+          await updateRestaurant(restaurantVals)
       
       // Then create new drink
       await createNewDrink(formVals)

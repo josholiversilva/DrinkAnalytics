@@ -5,7 +5,7 @@ import { signIn } from 'next-auth/react';
 const Google = () => {
     return (
         <>
-            <button className="border-2 border-white rounded-lg p-2 flex space-x-2" onClick={() => signIn({'provider': 'google'}, { callbackUrl: "/"})}>
+            <button className="border-2 border-white rounded-lg p-2 flex space-x-2" onClick={() => signIn(['google'])}>
                 <div>
                     <Image
                         src={google_icon}

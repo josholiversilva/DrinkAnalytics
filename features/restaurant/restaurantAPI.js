@@ -1,13 +1,6 @@
 const apiRoute = 'api/restaurant/new'
 
-const updateRestaurant = async (restaurant, rating) => {
-    console.log(`Client side: restaurant=${restaurant} & rating=${rating}`)
-
-    const newRestaurant = {
-      restaurant: restaurant,
-      rating: rating
-    }
-
+const updateRestaurant = async (newRestaurant) => {
     const response = await fetch(apiRoute, {
       method: 'PUT',
       headers: {
@@ -21,11 +14,7 @@ const updateRestaurant = async (restaurant, rating) => {
     return data
 }
 
-const createNewRestaurant = async (restaurant, rating) => {
-  const newRestaurant = {
-    name: restaurant,
-    rating: rating
-  }
+const createNewRestaurant = async (newRestaurant) => {
   console.log("INSIDE NEW RESTAURANT")
   console.log(newRestaurant)
   const response = await fetch(apiRoute, {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -8,8 +8,8 @@ import { changeIsGuest } from '../features/login/loginSlice'
 
 const Header = () => {
     const { data: session } = useSession()
-    const { isGuest } = useSelector(state => state.login)
     const dispatch = useDispatch()
+    var { isGuest } = useSelector(state => state.login)
 
     const [showProfile, setShowProfile] = useState(false)
     const router = useRouter()
