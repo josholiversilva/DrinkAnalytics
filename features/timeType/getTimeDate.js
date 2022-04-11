@@ -1,3 +1,5 @@
+require('datejs');
+
 const getTimeDate = (time, offset) => {
     const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"]
@@ -10,7 +12,7 @@ const getTimeDate = (time, offset) => {
         return monthNames.indexOf(monthNames[Date.today().getMonth()+offset[time]])+1
     }
     else {
-        var currDate = Date.today()
+        let currDate = Date.today()
         for (var x=0; x<Math.abs(offset[time]); x++) {
             if (offset[time] < 0) {
                 currDate = new Date(currDate - 7 * 24 * 60 * 60 * 1000)

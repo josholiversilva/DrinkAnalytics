@@ -10,11 +10,26 @@ import { useSession } from 'next-auth/react';
 import { useSelector } from 'react-redux';
 
 import "react-datepicker/dist/react-datepicker.css";
+import { getDrinks, getDrinksWithinDate, getRestaurants } from '../features/content/getData';
+import { getTimeDate } from '../features/timeType/getTimeDate';
 
+const UserForm = () => {
+  const { data: session } = useSession()
+  const { isGuest } = useSelector(state => state.login)
 
-const form = ({ drinks, restaurants }) => {
-    const { data: session } = useSession()
-    const { isGuest } = useSelector(state => state.login)
+  const { time, offset } = useSelector(state => state.timeType)
+  var userEmail = ''
+  if (isGuest)
+    userEmail="guest@guest.com"
+  else
+    userEmail=session.user.email
+
+  const timeDate = getTimeDate(time, offset)
+  const { drinks, errorDrinks } = getDrinksWithinDate(userEmail, time, timeDate)
+  const { restaurants, errorRestaurants } = getRestaurants(userEmail)
+
+  if (errorDrinks || errorRestaurants) return <div className="w-full flex items-center justify-center mt-2 text-white">Unable to Receive Info...</div>
+  if (!drinks || !restaurants) return <div className="w-full flex items-center justify-center mt-2 text-white">Loading...</div>
 
     const [usState, setUSState] = useState('CA');
     const [startDate, setStartDate] = useState(new Date());
@@ -63,12 +78,19 @@ const form = ({ drinks, restaurants }) => {
         }
 
     //useEffect(() => {
-      var drinkNames = drinks.map(drink => {
-        return drink.name
-      })
-      var restaurantNames = restaurants.map(restaurant => {
-        return restaurant.name
-      })
+    
+      var drinkNames = drinks ? 
+        drinks.map(drink => {
+          return drink.name
+        })
+      :
+        []
+      var restaurantNames = restaurants ?
+        restaurants.map(restaurant => {
+          return restaurant.name
+        })
+      :
+        []
      useEffect(() => {
        setDrinkOpts(drinkNames)
        setRestaurantOpts(restaurantNames)
@@ -348,21 +370,22 @@ const form = ({ drinks, restaurants }) => {
     )
 }
 
+/*
 export async function getServerSideProps(ctx) {
   var drinks = []
   var restaurants = []
 
+  const userClientEmail = isGuest ? "guest@guest.com" : session.user.email
+
   try {
-    const res = await fetch('http://localhost:3001/drinks')
-    drinks = await res.json()
+    drinks = getDrinks(userClientEmail)
   }
   catch (err) {
     console.log(err)
   }
 
   try {
-    const res_2 = await fetch('http://localhost:3001/restaurants')
-    restaurants = await res_2.json()
+    restaurants = getRestaurants(userClientEmail)
   }
   catch (err) {
     console.log(err)
@@ -375,5 +398,6 @@ export async function getServerSideProps(ctx) {
     }
   }
 }
+*/
 
-export default form 
+export default UserForm;

@@ -8,7 +8,7 @@ import { getTimeDate } from '../features/timeType/getTimeDate'
 import { getDrinks, getDrinksWithinDate, getRestaurants } from '../features/content/getData'
 import { useSession } from 'next-auth/react'
 
-const analytics = () => {
+const Analytics = () => {
   const { data: session } = useSession()
   const [vis, setVis] = useState('Drinks')
   const handleChangeVis = (newVis) => {
@@ -79,4 +79,4 @@ const analytics = () => {
   )
 }
 
-export default analytics;
+export default Analytics;

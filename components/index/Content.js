@@ -30,8 +30,8 @@ const Content = (props) => {
     var drinkSet = new Set()
     var restaurantSet = new Set()
 
-    if (errorDrinks || errorRestaurants) return <div className="text-white">Failed to load</div>
-    if (!drinks || !restaurants) return <div className="text-white">Loading...</div>
+    if (errorDrinks || errorRestaurants) return <div className="w-full flex items-center justify-center mt-12 text-white">Unable to Receive Info...</div>
+    if (!drinks || !restaurants) return <div className="w-full flex items-center justify-center mt-2 text-white">Loading...</div>
 
     const updates = []
     drinks.filter(d => {
