@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import "react-datepicker/dist/react-datepicker.css";
 import { getDrinks, getDrinksWithinDate, getRestaurants } from '../features/content/getData';
 import { getTimeDate } from '../features/timeType/getTimeDate';
+import NoFeatureGuest from '../components/login/NoFeatureGuest';
 
 const UserForm = () => {
   const { data: session } = useSession()
@@ -27,9 +28,6 @@ const UserForm = () => {
   const timeDate = getTimeDate(time, offset)
   const { drinks, errorDrinks } = getDrinksWithinDate(userEmail, time, timeDate)
   const { restaurants, errorRestaurants } = getRestaurants(userEmail)
-
-  if (errorDrinks || errorRestaurants) return <div className="w-full flex items-center justify-center mt-2 text-white">Unable to Receive Info...</div>
-  if (!drinks || !restaurants) return <div className="w-full flex items-center justify-center mt-2 text-white">Loading...</div>
 
     const [usState, setUSState] = useState('CA');
     const [startDate, setStartDate] = useState(new Date());
@@ -135,6 +133,11 @@ const UserForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitted, setSubmitted] = useState(false)
 
+  if (isGuest) {
+    return (
+      <NoFeatureGuest />
+    )
+  }
     return (
         <>
           <div className="flex justify-center items-center h-full">

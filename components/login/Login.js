@@ -13,7 +13,7 @@ const Login = () => {
                 </div>
                 <Guest />
             </div>
-            <div className="text-white text-xs italic">(Guest Accounts Are Cleaned Once Every Day & Exit On Hard Resets)</div>
+            <div className="text-white text-xs italic">(Guest Accounts Have Limited Features)</div>
         </div>
     )
 }
