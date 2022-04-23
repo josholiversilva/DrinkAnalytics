@@ -6,16 +6,16 @@ import DatePicker from "react-datepicker";
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { createNewRestaurant, updateRestaurant } from '../features/restaurant/restaurantAPI'
 import { createNewDrink } from '../features/drinks/drinksAPI'
-import { useSession } from 'next-auth/react';
 import { useSelector } from 'react-redux';
-
-import "react-datepicker/dist/react-datepicker.css";
 import { getDrinks, getDrinksWithinDate, getRestaurants } from '../features/content/getData';
 import { getTimeDate } from '../features/timeType/getTimeDate';
 import NoFeatureGuest from '../components/login/NoFeatureGuest';
+import { useAuth } from '../firebase/auth'
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const UserForm = () => {
-  const { data: session } = useSession()
+  const { user } = useAuth()
   const { isGuest } = useSelector(state => state.login)
 
   const { time, offset } = useSelector(state => state.timeType)
@@ -23,7 +23,7 @@ const UserForm = () => {
   if (isGuest)
     userEmail="guest@guest.com"
   else
-    userEmail=session.user.email
+    userEmail=user.email
 
   const timeDate = getTimeDate(time, offset)
   const { drinks, errorDrinks } = getDrinksWithinDate(userEmail, time, timeDate)
@@ -75,27 +75,15 @@ const UserForm = () => {
             setRating(newRating)
         }
 
-    //useEffect(() => {
-    
-      var drinkNames = drinks ? 
-        drinks.map(drink => {
-          return drink.name
-        })
-      :
-        []
-      var restaurantNames = restaurants ?
-        restaurants.map(restaurant => {
-          return restaurant.name
-        })
-      :
-        []
-     useEffect(() => {
+    useEffect(() => {
+      const drinkNames = drinks ? drinks.map(drink => {return drink.name}) : []
+      var restaurantNames = restaurants ? restaurants.map(restaurant => {return restaurant.name}) : []
        setDrinkOpts(drinkNames)
        setRestaurantOpts(restaurantNames)
-     }, [])
+     }, [drinks, restaurants])
 
     // Form Object
-    const clientUserEmail = isGuest ? 'guest@guest.com' : session.user.email
+    const clientUserEmail = isGuest ? 'guest@guest.com' : user.email
     const formVals = {
         name: drink,
         cost: cost,
@@ -372,35 +360,5 @@ const UserForm = () => {
         </>
     )
 }
-
-/*
-export async function getServerSideProps(ctx) {
-  var drinks = []
-  var restaurants = []
-
-  const userClientEmail = isGuest ? "guest@guest.com" : session.user.email
-
-  try {
-    drinks = getDrinks(userClientEmail)
-  }
-  catch (err) {
-    console.log(err)
-  }
-
-  try {
-    restaurants = getRestaurants(userClientEmail)
-  }
-  catch (err) {
-    console.log(err)
-  }
-
-  return {
-    props: {
-      drinks,
-      restaurants
-    }
-  }
-}
-*/
 
 export default UserForm;

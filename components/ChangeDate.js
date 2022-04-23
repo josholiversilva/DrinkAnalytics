@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Image from 'next/image'
 import left_arrow from '../public/left_arrow.png'
 import right_arrow from '../public/right_arrow.png'
 import { useDispatch, useSelector } from 'react-redux';
@@ -100,12 +99,8 @@ const ChangeDate = () => {
                     <div className="w-1/2 space-x-2" onMouseEnter={() => setShowArrows(true)} onMouseLeave={() => setShowArrows(false)}>
                         { showArrows &&
                             <button onClick={() => handleChangeOffset(-1)}>
-                                <div>
-                                    <Image
-                                        src={left_arrow}
-                                        width={25}
-                                        height={25}
-                                    />
+                                <div className="text-white">
+                                    {"<"}
                                 </div>
                             </button>
                         }
@@ -116,12 +111,8 @@ const ChangeDate = () => {
                         </button>
                         { showArrows &&
                             <button onClick={() => handleChangeOffset(1)}>
-                                <div>
-                                    <Image
-                                        src={right_arrow}
-                                        width={25}
-                                        height={25}
-                                    />
+                                <div className="text-white">
+                                    {">"}
                                 </div>
                             </button>
                         }

@@ -30,9 +30,6 @@ const getTimeDate = (time, offset) => {
         if (nxtMonth.toString().length <= 1)
             nxtMonth = `0${nxtMonth}`
 
-        console.log('lm:', lastMonth)
-        console.log('nm:', nxtMonth)
-
         var lastDate = newDate.last().monday().getDate()
         var nxtDate = newDate.next().monday().getDate()+1
 
@@ -40,9 +37,6 @@ const getTimeDate = (time, offset) => {
             lastDate = `0${lastDate}`
         if (nxtDate.toString().length <= 1)
             nxtDate = `0${nxtDate}`
-
-        console.log('ld', lastDate)
-        console.log('nd', nxtDate)
 
         return `${newDate.last().monday().getFullYear()}-${lastMonth}-${lastDate}and${newDate.next().monday().getFullYear()}-${nxtMonth}-${nxtDate}`
     }

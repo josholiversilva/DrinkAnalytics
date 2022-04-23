@@ -5,11 +5,11 @@ import Visuals from '../components/analytics/Visuals'
 import ChangeDate from '../components/ChangeDate'
 import { useSelector } from 'react-redux';
 import { getTimeDate } from '../features/timeType/getTimeDate'
-import { getDrinks, getDrinksWithinDate, getRestaurants } from '../features/content/getData'
-import { useSession } from 'next-auth/react'
+import { getDrinksWithinDate, getRestaurants } from '../features/content/getData'
+import { useAuth } from '../firebase/auth'
 
 const Analytics = () => {
-  const { data: session } = useSession()
+  const { user } = useAuth()
   const [vis, setVis] = useState('Drinks')
   const handleChangeVis = (newVis) => {
     setVis(newVis)
@@ -29,7 +29,7 @@ const Analytics = () => {
   if (isGuest)
     userEmail="guest@guest.com"
   else
-    userEmail=session.user.email
+    userEmail=user.email
 
   const timeDate = getTimeDate(time, offset)
   const { drinks, errorDrinks } = getDrinksWithinDate(userEmail, time, timeDate)

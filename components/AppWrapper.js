@@ -5,33 +5,26 @@ import Login from './login/Login';
 import { getProviders, getSession, useSession } from 'next-auth/react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import { useAuth } from '../firebase/auth'
 
 const AppWrapper = ({ Component, pageProps }) => {
-    const { data: session } = useSession()
-    var { isGuest } = useSelector(state => state.login)
+    const { isGuest } = useSelector(state => state.login)
+    const { user } = useAuth()
 
-    if (!session && !isGuest) return <Login />
-    
-    console.log('isGuest:', isGuest)
-    console.log('session data after login:', session)
     return (
-        <div className="bg-[#19222e]">
+        <>
+        { user || isGuest ?
+        <div className="bg-[#19222e] h-full">
             <Header />
             <Layout>
                 <Component {...pageProps} />
             </Layout>
         </div>
+        :
+        <Login />
+        }
+        </>
     )
 }
 
 export default AppWrapper;
-
-export async function getServerSideProps(ctx) {
-    const session = await getSession(ctx)
-
-    return {
-        props: {
-            session
-        }
-    }
-}

@@ -2,6 +2,7 @@ import NextAuth from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 
 export default NextAuth({
+    secret: 'thisisarandomsecret1234!',
     providers: [
         GoogleProvider({
           clientId: '290575140718-7i94ac4uhbn0gvu6akju74hb0qc893bp.apps.googleusercontent.com',
